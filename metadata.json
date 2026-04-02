@@ -1,0 +1,8 @@
+{
+  "name": "RAC Forge - Medical Device Regulatory Consulting",
+  "description": "Expert Medical Device Regulatory Consulting for Global Market Access. Navigating CDSCO, USFDA, and EU MDR Compliance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
