@@ -1,88 +1,120 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Phone, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a3651] text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Column 1: Logo & Tagline */}
-          <div className="space-y-6">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-[#0a3651] font-bold text-xl">RF</span>
+    <footer className="bg-brand-deep text-white pt-24 pb-12 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-teal/5 skew-x-12 translate-x-1/2"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          {/* Column 1: Brand & About */}
+          <div className="space-y-8">
+            <Link to="/" className="flex items-center space-x-3 group">
+              <div className="w-12 h-12 bg-brand-teal rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-brand-teal/20">
+                <span className="text-white font-black text-2xl">RF</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl leading-none">RAC FORGE</span>
-                <span className="text-[10px] tracking-widest font-medium text-white/80">PVT. LTD.</span>
+                <span className="font-black text-2xl tracking-tighter leading-none text-white">
+                  RAC FORGE
+                </span>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-teal">
+                  Regulatory Consulting
+                </span>
               </div>
             </Link>
-            <p className="text-gray-300 leading-relaxed">
-              Best Regulatory and Compliance consulting for medical device manufacturers.
+            <p className="text-white/60 leading-relaxed text-sm">
+              Navigating global regulatory landscapes with precision and expertise. Your strategic partner for CDSCO, USFDA, EU MDR, and Anvisa compliance.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-[#2c8498] transition-colors">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-[#2c8498] transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-[#2c8498] transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="p-2 bg-white/10 rounded-full hover:bg-[#2c8498] transition-colors">
-                <Youtube size={18} />
-              </a>
+              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+                <a key={i} href="#" className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-brand-teal transition-all transform hover:scale-110">
+                  <Icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2: Info Links */}
+          {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-6 border-b-2 border-[#2c8498] inline-block pb-1">Info</h3>
+            <h4 className="text-xl font-bold mb-8 border-b border-white/10 pb-4">Quick Links</h4>
             <ul className="space-y-4">
-              <li><Link to="/about" className="text-gray-300 hover:text-[#2c8498] transition-colors">About</Link></li>
-              <li><Link to="/blogs" className="text-gray-300 hover:text-[#2c8498] transition-colors">Blogs</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-[#2c8498] transition-colors">Contact</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-[#2c8498] transition-colors">Services</Link></li>
+              {['Home', 'About Us', 'Services', 'Expertise', 'Resources', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    to={item === 'Home' ? '/' : item === 'Resources' ? '/blogs/resources' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                    className="text-white/60 hover:text-brand-teal transition-colors flex items-center group"
+                  >
+                    <ArrowRight className="mr-2 w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Contact Info */}
-          <div className="lg:col-span-2">
-            <h3 className="text-xl font-bold mb-6 border-b-2 border-[#2c8498] inline-block pb-1">Contact</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Mail className="text-[#2c8498] mt-1 shrink-0" size={20} />
-                  <div>
-                    <p className="font-bold text-sm uppercase tracking-wider text-gray-400">Email Address</p>
-                    <a href="mailto:info@racforge.com" className="text-gray-300 hover:text-[#2c8498]">info@racforge.com</a>
-                  </div>
+          {/* Column 3: Detailed Services */}
+          <div>
+            <h4 className="text-xl font-bold mb-8 border-b border-white/10 pb-4">Our Services</h4>
+            <ul className="space-y-4">
+              {[
+                { name: 'CDSCO Manufacturing', path: '/services/cdsco-manufacturing-license' },
+                { name: 'USFDA 510(k)', path: '/services/usfda-510k-submission' },
+                { name: 'EU MDR Compliance', path: '/services/eu-mdr-compliance' },
+                { name: 'Anvisa Brazil', path: '/services/anvisa-brazil-approval' },
+                { name: 'SaMD Strategy', path: '/services/rd-and-samd' }
+              ].map((service) => (
+                <li key={service.name}>
+                  <Link 
+                    to={service.path} 
+                    className="text-white/60 hover:text-brand-teal transition-colors flex items-center group"
+                  >
+                    <ArrowRight className="mr-2 w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact Info */}
+          <div>
+            <h4 className="text-xl font-bold mb-8 border-b border-white/10 pb-4">Contact Us</h4>
+            <ul className="space-y-6">
+              <li className="flex items-start space-x-4 group">
+                <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-teal transition-colors">
+                  <MapPin size={20} className="text-brand-teal group-hover:text-white" />
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Phone className="text-[#2c8498] mt-1 shrink-0" size={20} />
-                  <div>
-                    <p className="font-bold text-sm uppercase tracking-wider text-gray-400">Phone Number</p>
-                    <a href="tel:+916239699077" className="text-gray-300 hover:text-[#2c8498]">+91-62396 99077</a>
-                  </div>
+                <span className="text-white/60 text-sm leading-relaxed">
+                  11, 1 village Nanehar, Thural, Kangra, Jaisinghpur, Himachal Pradesh - 176107
+                </span>
+              </li>
+              <li className="flex items-center space-x-4 group">
+                <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-teal transition-colors">
+                  <Phone size={20} className="text-brand-teal group-hover:text-white" />
                 </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="text-[#2c8498] mt-1 shrink-0" size={20} />
-                <div>
-                  <p className="font-bold text-sm uppercase tracking-wider text-gray-400">Locations</p>
-                  <p className="text-gray-300">
-                    RAC FORGE PRIVATE LIMITED 11, 1 village Nanehar, Thural, Kangra, Jaisinghpur Kangra - 176107, Himachal Pradesh
-                  </p>
+                <span className="text-white/60 text-sm">+91-XXXXXXXXXX</span>
+              </li>
+              <li className="flex items-center space-x-4 group">
+                <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-teal transition-colors">
+                  <Mail size={20} className="text-brand-teal group-hover:text-white" />
                 </div>
-              </div>
-            </div>
+                <span className="text-white/60 text-sm">info@racforge.com</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-gray-400 text-sm">
-          <p>© 2025 Copyrights by racforge</p>
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-white/40 text-sm text-center md:text-left">
+            © {new Date().getFullYear()} RAC Forge Pvt. Ltd. All rights reserved.
+          </p>
+          <div className="flex space-x-8 text-white/40 text-sm">
+            <Link to="/privacy-policy" className="hover:text-brand-teal transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-brand-teal transition-colors">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,147 +1,225 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X, ChevronDown, Globe, Shield, Flag, Code2, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 
-const SERVICES = [
-  { name: 'CDSCO India Regulatory Services', path: '/services/cdsco' },
-  { name: 'USFDA Regulatory Services', path: '/services/usfda' },
-  { name: 'EU MDR CE Marking Services', path: '/services/eu-mdr' },
-  { name: 'Core Documentation Services', path: '/services/core-doc' },
+const NAV_LINKS = [
+  { name: 'Home', path: '/' },
+  { name: 'About Us', path: '/about' },
+  { 
+    name: 'Services', 
+    path: '/services',
+    dropdown: [
+      { 
+        title: 'CDSCO India Regulatory Services', 
+        path: '/services/cdsco-manufacturing-license',
+        icon: <Flag className="w-5 h-5 text-orange-600" />,
+        items: [
+          { name: 'Manufacturing License', path: '/services/cdsco-manufacturing-license' },
+          { name: 'Import License', path: '/services/cdsco-import-license' },
+          { name: 'Loan License', path: '/services/cdsco-loan-license' },
+          { name: 'Test License', path: '/services/cdsco-test-license' },
+          { name: 'Clinical Investigation', path: '/services/cdsco-clinical-investigation' }
+        ]
+      },
+      { 
+        title: 'USFDA Regulatory Services', 
+        path: '/services/usfda-510k-submission',
+        icon: <Shield className="w-5 h-5 text-blue-600" />,
+        items: [
+          { name: '510(k) Submission', path: '/services/usfda-510k-submission' },
+          { name: 'PMA Application', path: '/services/usfda-pma-application' },
+          { name: 'De Novo Classification', path: '/services/usfda-de-novo-classification' }
+        ]
+      },
+      { 
+        title: 'EU MDR CE Marking Services', 
+        path: '/services/eu-mdr-compliance',
+        icon: <Globe className="w-5 h-5 text-emerald-600" />,
+        items: [
+          { name: 'EU MDR Compliance', path: '/services/eu-mdr-compliance' }
+        ]
+      },
+      { 
+        title: 'Core Documentation Services', 
+        path: '/services/rd-and-samd',
+        icon: <Code2 className="w-5 h-5 text-purple-600" />,
+        items: [
+          { name: 'Anvisa Brazil Approval', path: '/services/anvisa-brazil-approval' },
+          { name: 'SaMD & R&D Strategy', path: '/services/rd-and-samd' }
+        ]
+      }
+    ]
+  },
+  { name: 'Expertise', path: '/expertise' },
+  { name: 'Resources', path: '/blogs/resources' }
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [showServices, setShowServices] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     setIsOpen(false);
-    setShowServices(false);
+    setActiveDropdown(null);
   }, [location]);
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      )}
-    >
+    <nav className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+      scrolled ? "bg-white/90 backdrop-blur-md shadow-lg py-3" : "bg-transparent py-6"
+    )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-[#0a3651] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">RF</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-12 h-12 bg-brand-deep rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-brand-deep/20">
+              <span className="text-white font-black text-2xl">RF</span>
             </div>
             <div className="flex flex-col">
-              <span className={cn('font-bold text-xl leading-none', isScrolled ? 'text-[#0a3651]' : 'text-white')}>
+              <span className={cn("font-black text-2xl tracking-tighter leading-none", scrolled ? "text-brand-deep" : "text-white")}>
                 RAC FORGE
               </span>
-              <span className={cn('text-[10px] tracking-widest font-medium', isScrolled ? 'text-[#2c8498]' : 'text-white/80')}>
-                PVT. LTD.
+              <span className={cn("text-[10px] font-bold tracking-[0.2em] uppercase", scrolled ? "text-brand-teal" : "text-brand-teal")}>
+                Regulatory Consulting
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={cn('font-medium hover:text-[#2c8498] transition-colors', isScrolled ? 'text-[#0a3651]' : 'text-white')}>
-              Home
-            </Link>
-            <Link to="/about" className={cn('font-medium hover:text-[#2c8498] transition-colors', isScrolled ? 'text-[#0a3651]' : 'text-white')}>
-              About Us
-            </Link>
-            
-            {/* Services Dropdown */}
-            <div className="relative group">
-              <button
-                className={cn(
-                  'flex items-center font-medium hover:text-[#2c8498] transition-colors',
-                  isScrolled ? 'text-[#0a3651]' : 'text-white'
-                )}
-                onMouseEnter={() => setShowServices(true)}
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center space-x-10">
+            {NAV_LINKS.map((link) => (
+              <div 
+                key={link.name} 
+                className="relative group"
+                onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
+                onMouseLeave={() => link.dropdown && setActiveDropdown(null)}
               >
-                Services <ChevronDown className="ml-1 w-4 h-4" />
-              </button>
-              <div
-                className={cn(
-                  'absolute top-full left-0 w-64 bg-white shadow-xl rounded-lg py-2 transition-all duration-200 transform origin-top',
-                  showServices ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+                <Link 
+                  to={link.path}
+                  className={cn(
+                    "font-bold text-sm uppercase tracking-widest transition-colors flex items-center",
+                    scrolled ? "text-brand-deep hover:text-brand-teal" : "text-white hover:text-brand-teal"
+                  )}
+                >
+                  {link.name}
+                  {link.dropdown && <ChevronDown className="ml-1 w-4 h-4" />}
+                </Link>
+
+                {link.dropdown && (
+                  <AnimatePresence>
+                    {activeDropdown === link.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[800px]"
+                      >
+                        <div className="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 p-10 grid grid-cols-2 gap-10">
+                          {link.dropdown.map((section) => (
+                            <div key={section.title} className="space-y-6">
+                              <div className="flex items-center space-x-3">
+                                <div className="p-2 bg-gray-50 rounded-lg">{section.icon}</div>
+                                <h4 className="font-black text-brand-deep text-lg leading-tight">{section.title}</h4>
+                              </div>
+                              <ul className="space-y-3 pl-11">
+                                {section.items.map((item) => (
+                                  <li key={item.name}>
+                                    <Link 
+                                      to={item.path}
+                                      className="text-gray-600 hover:text-brand-teal text-sm font-bold transition-colors flex items-center group/item"
+                                    >
+                                      {item.name}
+                                      <ArrowRight className="ml-2 w-3 h-3 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all" />
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 )}
-                onMouseLeave={() => setShowServices(false)}
-              >
-                {SERVICES.map((service) => (
-                  <Link
-                    key={service.path}
-                    to={service.path}
-                    className="block px-4 py-2 text-sm text-[#0a3651] hover:bg-gray-50 hover:text-[#2c8498]"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
               </div>
-            </div>
-
-            <Link to="/blogs" className={cn('font-medium hover:text-[#2c8498] transition-colors', isScrolled ? 'text-[#0a3651]' : 'text-white')}>
-              Blogs
-            </Link>
-            <Link
-              to="/contact"
-              className={cn(
-                'px-6 py-2 rounded-full font-semibold transition-all',
-                isScrolled ? 'bg-[#0a3651] text-white hover:bg-[#2c8498]' : 'bg-white text-[#0a3651] hover:bg-[#2c8498] hover:text-white'
-              )}
+            ))}
+            <Link 
+              to="/contact" 
+              className="bg-brand-teal text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-brand-deep transition-all shadow-lg shadow-brand-teal/20 transform hover:scale-105 active:scale-95"
             >
-              Contact Us
+              Get Consultation
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={cn(isScrolled ? 'text-[#0a3651]' : 'text-white')}
-            >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+          {/* Mobile Toggle */}
+          <button 
+            className={cn("lg:hidden p-2 rounded-xl transition-colors", scrolled ? "text-brand-deep hover:bg-gray-100" : "text-white hover:bg-white/10")}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={cn(
-          'md:hidden absolute top-full left-0 right-0 bg-white shadow-xl transition-all duration-300 overflow-hidden',
-          isOpen ? 'max-h-[500px]' : 'max-h-0'
-        )}
-      >
-        <div className="px-4 py-6 space-y-4">
-          <Link to="/" className="block text-lg font-medium text-[#0a3651]">Home</Link>
-          <Link to="/about" className="block text-lg font-medium text-[#0a3651]">About Us</Link>
-          <div className="space-y-2">
-            <span className="block text-lg font-medium text-[#0a3651]">Services</span>
-            <div className="pl-4 space-y-2 border-l-2 border-[#2c8498]">
-              {SERVICES.map((service) => (
-                <Link key={service.path} to={service.path} className="block text-sm text-gray-600">
-                  {service.name}
-                </Link>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-4 py-10 space-y-8">
+              {NAV_LINKS.map((link) => (
+                <div key={link.name} className="space-y-4">
+                  <Link 
+                    to={link.path}
+                    className="text-2xl font-black text-brand-deep block"
+                  >
+                    {link.name}
+                  </Link>
+                  {link.dropdown && (
+                    <div className="grid grid-cols-1 gap-6 pl-4 border-l-2 border-gray-100">
+                      {link.dropdown.map((section) => (
+                        <div key={section.title} className="space-y-3">
+                          <h4 className="font-bold text-brand-teal text-sm uppercase tracking-widest">{section.title}</h4>
+                          <div className="space-y-2">
+                            {section.items.map((item) => (
+                              <Link 
+                                key={item.name}
+                                to={item.path}
+                                className="text-gray-600 block font-bold text-lg"
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
+              <Link 
+                to="/contact" 
+                className="block bg-brand-deep text-white text-center py-5 rounded-2xl font-black text-xl"
+              >
+                Get Consultation
+              </Link>
             </div>
-          </div>
-          <Link to="/blogs" className="block text-lg font-medium text-[#0a3651]">Blogs</Link>
-          <Link to="/contact" className="block text-center bg-[#0a3651] text-white py-3 rounded-lg font-bold">
-            Contact Us
-          </Link>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

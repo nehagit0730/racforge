@@ -1,36 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import { Phone, Mail, MapPin, Twitter, Instagram, Linkedin, Youtube, Send, Loader2, CheckCircle2 } from 'lucide-react';
-
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 }
-};
+import { Mail, Phone, MapPin, Clock, Send, Globe, MessageSquare, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
-  };
-
   return (
     <div className="flex flex-col w-full">
-      {/* Banner */}
-      <section className="relative h-[300px] flex items-center pt-20 bg-[#0a3651] overflow-hidden">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with our regulatory experts for a consultation on your medical device approval pathway."
+        canonical="/contact"
+      />
+
+      {/* Contact Hero */}
+      <section className="relative h-[400px] flex items-center pt-20 bg-brand-deep overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
-            src="https://picsum.photos/seed/contact/1920/1080"
-            alt="Contact Banner"
+            src="https://picsum.photos/seed/contact-hero/1920/1080"
+            alt="Contact RAC Forge"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -39,125 +26,160 @@ export default function Contact() {
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold text-white"
+            className="text-4xl md:text-6xl font-extrabold text-white mb-6"
           >
             Contact Us
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+          >
+            Ready to navigate global regulatory compliance? Our experts are here to help.
+          </motion.p>
         </div>
       </section>
 
-      {/* Contact Info Cards */}
+      {/* Contact Content */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-            <motion.div {...fadeIn} className="bg-gray-50 p-10 rounded-3xl text-center group hover:bg-[#0a3651] hover:text-white transition-all">
-              <div className="w-16 h-16 bg-[#2c8498] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-white group-hover:text-[#2c8498] transition-colors">
-                <Phone size={32} />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            {/* Contact Info */}
+            <div className="lg:col-span-5 space-y-12">
+              <div className="space-y-6">
+                <span className="text-brand-teal font-bold tracking-widest uppercase text-sm mb-4 block">Get in Touch</span>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-brand-deep leading-tight">
+                  Let's Discuss Your Regulatory Strategy
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Whether you are a startup or an established manufacturer, we provide tailored solutions for your global market entry.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-2">Call Anytime</h3>
-              <a href="tel:+916239699077" className="text-[#2c8498] font-bold text-lg group-hover:text-white transition-colors">+91-62396 99077</a>
-            </motion.div>
 
-            <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="bg-gray-50 p-10 rounded-3xl text-center group hover:bg-[#0a3651] hover:text-white transition-all">
-              <div className="w-16 h-16 bg-[#2c8498] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-white group-hover:text-[#2c8498] transition-colors">
-                <Mail size={32} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Send Email</h3>
-              <a href="mailto:info@racforge.com" className="text-[#2c8498] font-bold text-lg group-hover:text-white transition-colors">info@racforge.com</a>
-            </motion.div>
-
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="bg-gray-50 p-10 rounded-3xl text-center group hover:bg-[#0a3651] hover:text-white transition-all">
-              <div className="w-16 h-16 bg-[#2c8498] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-white group-hover:text-[#2c8498] transition-colors">
-                <MapPin size={32} />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Visit Office</h3>
-              <p className="text-sm font-medium opacity-80">RAC FORGE PRIVATE LIMITED, Himachal Pradesh</p>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Form */}
-            <motion.div {...fadeIn} className="bg-white p-10 rounded-[40px] shadow-2xl border border-gray-50">
-              <h2 className="text-3xl font-bold text-[#0a3651] mb-8">Send us a Message</h2>
-              {isSuccess ? (
-                <div className="text-center py-12">
-                  <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 size={48} />
+              <div className="space-y-8">
+                <div className="flex items-start space-x-6 group">
+                  <div className="w-14 h-14 bg-brand-teal/10 rounded-2xl flex items-center justify-center text-brand-teal shrink-0 group-hover:bg-brand-teal group-hover:text-white transition-all">
+                    <MapPin size={28} />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#0a3651] mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">We will get back to you shortly.</p>
-                  <button 
-                    onClick={() => setIsSuccess(false)}
-                    className="mt-8 text-[#2c8498] font-bold hover:underline"
-                  >
-                    Send another message
-                  </button>
+                  <div>
+                    <h4 className="font-bold text-brand-deep mb-1 text-xl">Headquarters</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      11, 1 village Nanehar, Thural, Kangra, Jaisinghpur<br />
+                      Kangra - 176107, Himachal Pradesh, India
+                    </p>
+                  </div>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-[#0a3651] uppercase tracking-wider">Full Name</label>
-                      <input required type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#2c8498] outline-none" />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-[#0a3651] uppercase tracking-wider">Email Address</label>
-                      <input required type="email" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#2c8498] outline-none" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-[#0a3651] uppercase tracking-wider">Subject</label>
-                    <input required type="text" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#2c8498] outline-none" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-[#0a3651] uppercase tracking-wider">Message</label>
-                    <textarea required className="w-full h-40 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#2c8498] outline-none resize-none" />
-                  </div>
-                  <button
-                    disabled={isSubmitting}
-                    className="w-full bg-[#0a3651] text-white py-4 rounded-xl font-bold flex items-center justify-center space-x-2 hover:bg-[#2c8498] transition-all disabled:opacity-50 shadow-lg"
-                  >
-                    {isSubmitting ? <Loader2 className="animate-spin" /> : <Send size={20} />}
-                    <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
-                  </button>
-                </form>
-              )}
-            </motion.div>
 
-            {/* Social & Map */}
-            <div className="space-y-12">
-              <motion.div {...fadeIn}>
-                <h2 className="text-3xl font-bold text-[#0a3651] mb-8">Connect with Us</h2>
-                <div className="flex flex-wrap gap-4">
-                  {[
-                    { icon: <Twitter />, link: '#' },
-                    { icon: <Instagram />, link: '#' },
-                    { icon: <Linkedin />, link: '#' },
-                    { icon: <Youtube />, link: '#' },
-                    { icon: <Mail />, link: 'mailto:info@racforge.com' }
-                  ].map((social, i) => (
-                    <a
-                      key={i}
-                      href={social.link}
-                      className="w-14 h-14 bg-gray-50 text-[#0a3651] rounded-2xl flex items-center justify-center hover:bg-[#2c8498] hover:text-white transition-all shadow-sm"
-                    >
-                      {social.icon}
+                <div className="flex items-start space-x-6 group">
+                  <div className="w-14 h-14 bg-brand-deep/10 rounded-2xl flex items-center justify-center text-brand-deep shrink-0 group-hover:bg-brand-deep group-hover:text-white transition-all">
+                    <MapPin size={28} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-deep mb-1 text-xl">Corporate Office</h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      New Delhi, India
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-6 group">
+                  <div className="w-14 h-14 bg-brand-teal/10 rounded-2xl flex items-center justify-center text-brand-teal shrink-0 group-hover:bg-brand-teal group-hover:text-white transition-all">
+                    <Mail size={28} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-deep mb-1 text-xl">Email Us</h4>
+                    <p className="text-gray-600 leading-relaxed">info@racforge.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-6 group">
+                  <div className="w-14 h-14 bg-brand-deep/10 rounded-2xl flex items-center justify-center text-brand-deep shrink-0 group-hover:bg-brand-deep group-hover:text-white transition-all">
+                    <Clock size={28} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-brand-deep mb-1 text-xl">Working Hours</h4>
+                    <p className="text-gray-600 leading-relaxed">Mon - Fri: 9:00 AM - 6:00 PM IST</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-10 border-t border-gray-100">
+                <h4 className="text-xl font-bold text-brand-deep mb-6">Follow Us</h4>
+                <div className="flex space-x-4">
+                  {['Facebook', 'Twitter', 'Linkedin', 'Instagram'].map((item) => (
+                    <a key={item} href="#" className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center hover:bg-brand-teal hover:text-white transition-all transform hover:scale-110">
+                      <Globe size={20} />
                     </a>
                   ))}
                 </div>
-              </motion.div>
+              </div>
+            </div>
 
-              <motion.div {...fadeIn} className="aspect-video bg-gray-100 rounded-[40px] overflow-hidden shadow-xl border-4 border-white">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.3!2d76.5!3d32.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCMDYnMDAuMCJOIDc2wrAzMCcwMC4wIkU!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
-                  className="w-full h-full border-0 grayscale opacity-80"
-                  allowFullScreen
-                  loading="lazy"
-                ></iframe>
+            {/* Contact Form */}
+            <div className="lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 p-10 md:p-16 rounded-[4rem] border border-gray-100 shadow-2xl relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-teal/5 skew-x-12 translate-x-1/4"></div>
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-extrabold text-brand-deep mb-10">Send a Message</h3>
+                  <form action="mailto:info@racforge.com" method="post" encType="text/plain" className="space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                        <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">First Name *</label>
+                        <input required type="text" name="firstName" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" />
+                      </div>
+                      <div className="space-y-3">
+                        <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Last Name *</label>
+                        <input required type="text" name="lastName" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" />
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Email Address *</label>
+                      <input required type="email" name="email" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" />
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Subject *</label>
+                      <select required name="subject" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white">
+                        <option value="">Select a subject</option>
+                        <option value="CDSCO Inquiry">CDSCO Inquiry</option>
+                        <option value="USFDA Inquiry">USFDA Inquiry</option>
+                        <option value="EU MDR Inquiry">EU MDR Inquiry</option>
+                        <option value="Anvisa Inquiry">Anvisa Inquiry</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                      </select>
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Message *</label>
+                      <textarea required name="message" rows={5} className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white resize-none"></textarea>
+                    </div>
+                    <button type="submit" className="w-full bg-brand-deep text-white py-6 rounded-2xl font-black text-xl hover:bg-brand-teal transition-all shadow-xl shadow-brand-deep/20 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center">
+                      Send Message <Send className="ml-3" size={24} />
+                    </button>
+                  </form>
+                </div>
               </motion.div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="h-[500px] w-full bg-gray-100 relative overflow-hidden">
+        <iframe 
+          title="RAC Forge Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3386.4321!2d76.54321!3d32.12345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCMDcnMjQuNCJOIDc2wrAzMicyNy42IkU!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+          width="100%" 
+          height="100%" 
+          style={{ border: 0 }} 
+          allowFullScreen 
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </section>
     </div>
   );

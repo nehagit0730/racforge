@@ -1,49 +1,68 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
 import Chatbot from './components/Chatbot';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import CDSCO from './pages/Services/CDSCO';
-import USFDA from './pages/Services/USFDA';
-import EUMDR from './pages/Services/EUMDR';
-import CoreDoc from './pages/Services/CoreDoc';
-import { BlogList, BlogPost } from './pages/Blogs';
-import Contact from './pages/Contact';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Services = lazy(() => import('./pages/Services'));
+const Expertise = lazy(() => import('./pages/Expertise'));
+const Resources = lazy(() => import('./pages/Resources'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const Contact = lazy(() => import('./pages/Contact'));
+const InfoDetail = lazy(() => import('./pages/Information/InfoDetail'));
+
+// Service Sub-pages
+const CDSCOManufacturing = lazy(() => import('./pages/Services/CDSCOManufacturing'));
+const CDSCOImport = lazy(() => import('./pages/Services/CDSCOImport'));
+const CDSCOLoan = lazy(() => import('./pages/Services/CDSCOLoan'));
+const CDSCOTest = lazy(() => import('./pages/Services/CDSCOTest'));
+const CDSCOClinical = lazy(() => import('./pages/Services/CDSCOClinical'));
+const USFDA510k = lazy(() => import('./pages/Services/USFDA510k'));
+const USFDAPMA = lazy(() => import('./pages/Services/USFDAPMA'));
+const USFDADeNovo = lazy(() => import('./pages/Services/USFDADeNovo'));
+const EUMDRCompliance = lazy(() => import('./pages/Services/EUMDRCompliance'));
+const AnvisaBrazil = lazy(() => import('./pages/Services/AnvisaBrazil'));
+const RDandSaMD = lazy(() => import('./pages/Services/RDandSaMD'));
+
+const Loading = () => (
+  <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="w-16 h-16 border-4 border-brand-teal border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-white font-sans selection:bg-[#2c8498] selection:text-white">
-        <Navbar />
-        <main className="flex-grow">
+      <Layout>
+        <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/services/cdsco" element={<CDSCO />} />
-            <Route path="/services/usfda" element={<USFDA />} />
-            <Route path="/services/eu-mdr" element={<EUMDR />} />
-            <Route path="/services/core-doc" element={<CoreDoc />} />
-            <Route path="/blogs" element={<BlogList />} />
+            <Route path="/expertise" element={<Expertise />} />
+            <Route path="/blogs/resources" element={<Resources />} />
             <Route path="/blogs/:id" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/information/:slug" element={<InfoDetail />} />
+
+            {/* Service Sub-routes */}
+            <Route path="/services/cdsco-manufacturing-license" element={<CDSCOManufacturing />} />
+            <Route path="/services/cdsco-import-license" element={<CDSCOImport />} />
+            <Route path="/services/cdsco-loan-license" element={<CDSCOLoan />} />
+            <Route path="/services/cdsco-test-license" element={<CDSCOTest />} />
+            <Route path="/services/cdsco-clinical-investigation" element={<CDSCOClinical />} />
+            <Route path="/services/usfda-510k-submission" element={<USFDA510k />} />
+            <Route path="/services/usfda-pma-application" element={<USFDAPMA />} />
+            <Route path="/services/usfda-de-novo-classification" element={<USFDADeNovo />} />
+            <Route path="/services/eu-mdr-compliance" element={<EUMDRCompliance />} />
+            <Route path="/services/anvisa-brazil-approval" element={<AnvisaBrazil />} />
+            <Route path="/services/rd-and-samd" element={<RDandSaMD />} />
           </Routes>
-        </main>
-        <Footer />
-        <Chatbot />
-      </div>
+        </Suspense>
+      </Layout>
+      <Chatbot />
     </Router>
   );
 }
