@@ -32,31 +32,31 @@ const BLOG_POSTS = [
   {
     id: 'sterilization-validation',
     title: 'Sterilization Validation for Medical Devices',
-    image: 'https://picsum.photos/seed/sterilization/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Sterilization-Validation-for-Medical-Devices.jpg',
     date: '12 Oct'
   },
   {
     id: 'biocompatibility-testing',
     title: 'Biocompatibility Testing Strategies for Medical Devices',
-    image: 'https://picsum.photos/seed/biocompatibility/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Biocompatibility-Testing-Strategies-for-Medical-Devices.png',
     date: '11 Oct'
   },
   {
     id: 'mastering-eu-mdr',
     title: 'Mastering EU MDR Technical Documentation',
-    image: 'https://picsum.photos/seed/eumdr/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Mastering-EU-MDR-Technical-Documentation.png',
     date: '10 Oct'
   },
   {
     id: 'navigating-usfda-510k',
     title: 'Navigating USFDA’s 510(k) Submission Process',
-    image: 'https://picsum.photos/seed/usfda/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2026/04/Navigating-USFDAs-510k-Submission-Process.png',
     date: '10 Oct'
   },
   {
     id: 'understanding-cdsco-rules',
     title: 'Understanding CDSCO’s Medical Devices Rules, 2017',
-    image: 'https://picsum.photos/seed/cdsco/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Understanding-CDSCOs-Medical-Devices-Rules-2017.jpg',
     date: '10 Oct'
   }
 ];
@@ -75,7 +75,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center pt-20 bg-brand-deep overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
-            src="https://picsum.photos/seed/tech-meeting/1920/1080"
+            src="https://racforge.com/wp-content/uploads/2025/10/hero-banner.png"
             alt="Regulatory Consulting"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -329,7 +329,7 @@ export default function Home() {
               className="relative rounded-[3rem] overflow-hidden shadow-2xl"
             >
               <img 
-                src="https://picsum.photos/seed/consulting/1000/1200" 
+                src="https://racforge.com/wp-content/uploads/2026/04/Navigating-USFDAs-510k-Submission-Process.png" 
                 alt="Strategic Consulting" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
