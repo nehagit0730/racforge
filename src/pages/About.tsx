@@ -17,7 +17,7 @@ export default function About() {
       <section className="relative h-[400px] flex items-center pt-20 bg-brand-deep overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
-            src="https://picsum.photos/seed/about-banner/1920/1080"
+            src="https://racforge.com/wp-content/uploads/2025/10/Expert-Medical-Device-Regulatory-Consulting-for-Global-Market-Access.png"
             alt="About RAC Forge"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -254,7 +254,7 @@ export default function About() {
                 <h4 className="text-2xl font-bold text-brand-deep mb-6">Company Legal Status Confirmation</h4>
                 <p className="text-gray-600 mb-8">Certifies that the company is a legally established entity with the right to conduct business activities as per Indian law.</p>
                 <img 
-                  src="https://picsum.photos/seed/certificate/600/400" 
+                  src="https://racforge.com/wp-content/uploads/2026/01/certificate.jpg" 
                   alt="Certificate" 
                   className="w-full rounded-2xl shadow-md"
                   referrerPolicy="no-referrer"
@@ -268,7 +268,7 @@ export default function About() {
               className="relative rounded-[3rem] overflow-hidden shadow-2xl"
             >
               <img 
-                src="https://picsum.photos/seed/team-meeting/1000/1200" 
+                src="https://racforge.com/wp-content/uploads/2025/10/Expert-Medical-Device-Regulatory-Consulting-for-Global-Market-Access2.png" 
                 alt="Our Team" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
