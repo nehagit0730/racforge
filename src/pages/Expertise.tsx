@@ -132,7 +132,7 @@ export default function Expertise() {
                   <div className="absolute -inset-4 bg-brand-teal/5 rounded-[4rem] -rotate-3"></div>
                   <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
                     <img 
-                      src={`https://picsum.photos/seed/expertise-${idx}/800/600`} 
+                      src={area.image} 
                       alt={area.title} 
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
