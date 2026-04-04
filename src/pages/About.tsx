@@ -130,14 +130,14 @@ export default function About() {
 
       {/* Industry Memberships Section */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-3xl md:text-5xl font-extrabold text-brand-deep mb-6">Industry Memberships & Authority</h2>
             <p className="text-gray-600 text-lg leading-relaxed">
               We are active participants in the global medical device community, ensuring we stay at the forefront of regulatory changes.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
               { label: "Associate Member", value: "AiMeD" },
               { label: "Member", value: "IMDRRG" },
@@ -152,7 +152,7 @@ export default function About() {
                 transition={{ delay: idx * 0.1 }}
                 className="flex flex-col items-center"
               >
-                <div className="text-4xl md:text-6xl font-black text-brand-deep mb-2">{item.value}</div>
+                <div className="text-2xl md:text-4xl font-black text-brand-deep mb-2">{item.value}</div>
                 <div className="text-brand-teal font-bold uppercase tracking-widest text-sm">{item.label}</div>
               </motion.div>
             ))}

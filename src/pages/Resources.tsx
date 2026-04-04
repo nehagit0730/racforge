@@ -9,7 +9,7 @@ const BLOG_POSTS = [
     id: 'sterilization-validation',
     title: 'Sterilization Validation for Medical Devices',
     excerpt: 'Sterilization validation is a critical process in the medical device industry, ensuring that devices are safe for patient use.',
-    image: 'https://picsum.photos/seed/sterilization/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Sterilization-Validation-for-Medical-Devices.jpg',
     date: '12 Oct 2025',
     category: 'Technical'
   },
@@ -17,7 +17,7 @@ const BLOG_POSTS = [
     id: 'biocompatibility-testing',
     title: 'Biocompatibility Testing Strategies for Medical Devices',
     excerpt: 'Biocompatibility testing is a fundamental requirement for medical devices that come into contact with the human body.',
-    image: 'https://picsum.photos/seed/biocompatibility/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Biocompatibility-Testing-Strategies-for-Medical-Devices.png',
     date: '11 Oct 2025',
     category: 'Testing'
   },
@@ -25,7 +25,7 @@ const BLOG_POSTS = [
     id: 'mastering-eu-mdr',
     title: 'Mastering EU MDR Technical Documentation',
     excerpt: 'The EU Medical Device Regulation (MDR) 2017/745 has significantly increased the requirements for technical documentation.',
-    image: 'https://picsum.photos/seed/eumdr/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Mastering-EU-MDR-Technical-Documentation.png',
     date: '10 Oct 2025',
     category: 'Regulatory'
   },
@@ -33,7 +33,7 @@ const BLOG_POSTS = [
     id: 'navigating-usfda-510k',
     title: 'Navigating USFDA’s 510(k) Submission Process',
     excerpt: 'The 510(k) submission is the most common pathway for medical device clearance in the United States.',
-    image: 'https://picsum.photos/seed/usfda/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Navigating-USFDAs-510k-Submission-Process.png',
     date: '10 Oct 2025',
     category: 'Regulatory'
   },
@@ -41,7 +41,7 @@ const BLOG_POSTS = [
     id: 'understanding-cdsco-rules',
     title: 'Understanding CDSCO’s Medical Devices Rules, 2017',
     excerpt: 'The Medical Devices Rules, 2017, represent a significant shift in the regulatory landscape for medical devices in India.',
-    image: 'https://picsum.photos/seed/cdsco/800/600',
+    image: 'https://racforge.com/wp-content/uploads/2025/10/Understanding-CDSCOs-Medical-Devices-Rules-2017.jpg',
     date: '10 Oct 2025',
     category: 'Regulatory'
   }
@@ -60,7 +60,7 @@ export default function Resources() {
       <section className="relative h-[400px] flex items-center pt-20 bg-brand-deep overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
-            src="https://picsum.photos/seed/resources-hero/1920/1080"
+            src="https://racforge.com/wp-content/uploads/2025/10/Expert-Medical-Device-Regulatory-Consulting-for-Global-Market-Access-1.png"
             alt="RAC Forge Resources"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
