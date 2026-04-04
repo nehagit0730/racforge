@@ -155,7 +155,7 @@ export default function Expertise() {
               <p className="text-white/70 text-xl leading-relaxed mb-16">
                 We are active participants in the global medical device community, ensuring we stay at the forefront of regulatory changes and industry best practices.
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
                   { label: "Associate Member", value: "AiMeD" },
                   { label: "Member", value: "IMDRRG" },
@@ -163,7 +163,7 @@ export default function Expertise() {
                   { label: "ISO 13485", value: "Quality Certified" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex flex-col items-center">
-                    <div className="text-3xl md:text-5xl font-black text-brand-teal mb-2">{item.value}</div>
+                    <div className="text-2xl md:text-2xl font-black text-brand-teal mb-2">{item.value}</div>
                     <div className="text-white/60 font-bold uppercase tracking-widest text-xs">{item.label}</div>
                   </div>
                 ))}
