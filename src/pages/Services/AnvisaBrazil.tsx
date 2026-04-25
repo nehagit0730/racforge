@@ -49,36 +49,42 @@ export default function AnvisaBrazil() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of Anvisa Approval</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Unlocking the Brazilian Market with Anvisa Approval</h2>
                 <p>
-                  Anvisa (Agência Nacional de Vigilância Sanitária) is the Brazilian regulatory agency responsible for medical devices. The approval process involves classification, registration, and compliance with Brazilian Good Manufacturing Practices (<InfoLink text="BGMP" />).
+                  Entering the South American market begins with the <InfoLink text="Anvisa" /> (Agência Nacional de Vigilância Sanitária) in Brazil. The regulatory environment in Brazil is unique, requiring foreign manufacturers to appoint a **Brazilian Registration Holder (BRH)**—a local company that acts as the legal representative and host for product registrations.
+                </p>
+                <p>
+                  Compliance with the Brazilian Good Manufacturing Practices (**BGMP**), specifically **RDC 665/2022**, is a prerequisite for most registrations. Anvisa may conduct on-site inspections for high-risk (Class III and IV) devices to verify BGMP compliance.
                 </p>
                 
-                <div className="bg-yellow-50 p-10 rounded-[3rem] border border-yellow-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements</h4>
-                  <p className="text-sm mb-6">Anvisa approval involves several critical components:</p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Brazilian Good Manufacturing Practices (<InfoLink text="BGMP" />).</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Technical Dossier (Relatório Técnico).</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> INMETRO and ANATEL Certification (if applicable).</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Local Alliance Coordination.</li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">INMETRO & ANATEL Certifications</h4>
+                    <p className="text-sm leading-relaxed">Medical electrical equipment often requires **INMETRO** certification for safety, while devices with wireless communication (Bluetooth, Wi-Fi) require **ANATEL** approval. We coordinate with local laboratories to facilitate these processes.</p>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Registration Pathways</h4>
+                    <p className="text-sm leading-relaxed mb-4">Low-risk devices (Class I and II) follow the **Notification** pathway, while high-risk devices (Class III and IV) require a full **Registration** (Registro) with more extensive data review.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Our Anvisa Brazil Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Expedited Approval Pathways:</strong> Strategic use of existing international approvals to speed up the process.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Technical Documentation:</strong> Comprehensive documentation in Portuguese, including clinical data and validation.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Quality Management System (QMS):</strong> Evidence of compliance with <InfoLink text="ISO 13485" /> and <InfoLink text="BGMP" />.</span>
-                  </li>
+                  {[
+                    "Selection and management of a Brazilian Registration Holder (BRH)",
+                    "Preparation of the technical dossier for Anvisa submission",
+                    "Support for BGMP (RDC 665/2022) compliance and readiness audits",
+                    "Coordination of INMETRO and ANATEL certification processes",
+                    "Gap analysis of existing data against Anvisa requirements",
+                    "Translation of technical documents and labeling into Portuguese",
+                    "Management of Anvisa interactions and RFI (Request for Information) responses",
+                    "Assistance with product renewals and amendments"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

@@ -49,39 +49,42 @@ export default function USFDADeNovo() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of De Novo Classification</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Pioneering Novel Device Clearance: The De Novo Pathway</h2>
                 <p>
-                  The De Novo classification process provides a pathway to classify novel medical devices for which general controls alone, or general and special controls, provide reasonable assurance of safety and effectiveness, but for which there is no legally marketed predicate device.
+                  The **De Novo classification process** provides a pathway to classify novel medical devices that are low to moderate risk but for which there is no legally marketed predicate device. Traditionally, such devices would be automatically classified as Class III (high risk), requiring a <InfoLink text="PMA" />. The De Novo process allows them to be reclassified as Class I or Class II.
+                </p>
+                <p>
+                  This pathway is essential for innovative technologies that don't fit into existing product codes. It requires a robust **risk-benefit analysis** to demonstrate that general controls, or general and **special controls**, provide reasonable assurance of safety and effectiveness.
                 </p>
                 
-                <div className="bg-blue-50 p-10 rounded-[3rem] border border-blue-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Novel Devices</h4>
-                  <p className="text-sm mb-6">De Novo classification is for devices that are low-to-moderate risk but have no predicate.</p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> No existing predicate device.</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Low-to-moderate risk profile.</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Potential for Class I or II classification.</li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Risk-Based Classification</h4>
+                    <p className="text-sm leading-relaxed">The De Novo request must include a detailed identification of all risks and the specific controls (e.g., performance testing, labeling) used to mitigate them.</p>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Establishing a New Predicate</h4>
+                    <p className="text-sm leading-relaxed">Once a De Novo request is granted, the device can serve as a predicate for future 510(k) submissions, creating a new product classification.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Our USFDA De Novo Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Risk-Based Analysis:</strong> A thorough assessment of the device's risks and how they are mitigated.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Performance Data:</strong> Bench testing, biocompatibility, and clinical data (if required).</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Device Description:</strong> Detailed information about the device's design, materials, and intended use.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Special Controls:</strong> Proposed special controls to ensure safety and effectiveness.</span>
-                  </li>
+                  {[
+                    "Strategic assessment of De Novo eligibility and risk profile",
+                    "Preparation of the De Novo request submission package",
+                    "Development of a comprehensive risk-benefit analysis",
+                    "Support for pre-submission (Q-Sub) meetings with FDA",
+                    "Assistance in proposing special controls for the new classification",
+                    "Review of performance testing and clinical data",
+                    "Management of FDA interactions and additional information requests",
+                    "Support for subsequent 510(k) submissions for similar devices"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

@@ -248,7 +248,7 @@ export default function About() {
                 Why We're Different
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Unlike testing labs or general consulting firms, RAC Forge focuses solely on regulatory documentation and strategy. We do not conduct physical testing but excel in creating the evidence needed to show your device's safety and effectiveness to regulatory authorities like <InfoLink text="CDSCO" /> and the <InfoLink text="USFDA" />.
+                Unlike testing labs or general consulting firms, RAC Forge focuses solely on regulatory documentation and strategy. We excel in creating the evidence needed to show your device's safety and effectiveness to regulatory authorities like <InfoLink text="CDSCO" /> and the <InfoLink text="USFDA" />.
               </p>
               <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100">
                 <h4 className="text-2xl font-bold text-brand-deep mb-6">Company Legal Status Confirmation</h4>

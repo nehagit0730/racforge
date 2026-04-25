@@ -49,37 +49,45 @@ export default function CDSCOClinical() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of Clinical Investigations</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Navigating Clinical Investigations in India</h2>
                 <p>
-                  Clinical investigation is a systematic study in human subjects that is undertaken to assess the safety and performance of a medical device. Under the Medical Devices Rules, 2017, certain classes of devices require clinical data to support their approval for sale or distribution in India.
+                  Clinical investigation is the cornerstone of demonstrating the safety and performance of high-risk medical devices (Class C and D) and novel technologies. Under the Medical Devices Rules, 2017, the <InfoLink text="CDSCO" /> requires a rigorous and ethically sound process for conducting these studies. This involves not only the Central Licensing Authority (CLA) but also registered **Ethics Committees (EC)** and qualified investigators.
+                </p>
+                <p>
+                  The process begins with the development of a comprehensive **Clinical Investigation Plan (CIP)** and an **Investigator's Brochure (IB)**. These documents must be reviewed and approved by both the Ethics Committee and the CDSCO before any subjects can be enrolled.
                 </p>
                 
-                <div className="bg-gray-50 p-10 rounded-[3rem] border border-gray-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Key Forms</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-center text-lg"><CheckCircle2 className="text-brand-teal mr-4" size={24} /> Application: <InfoLink text="MD-22" /></li>
-                    <li className="flex items-center text-lg"><CheckCircle2 className="text-brand-teal mr-4" size={24} /> Grant: <InfoLink text="MD-23" /></li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Investigational Medical Devices</h4>
+                    <p className="text-sm font-bold mb-4">Form MD-22 & MD-23</p>
+                    <p className="text-sm mb-4 leading-relaxed">Application (MD-22) and Grant (MD-23) of permission to conduct a clinical investigation of an investigational medical device. This is mandatory for devices that do not have a predicate in the Indian market.</p>
+                    <p className="text-sm"><strong>Ethics Committee Approval:</strong> All clinical investigations must be approved by an Ethics Committee registered with the CDSCO to ensure the protection of human subjects.</p>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">New In Vitro Diagnostics (IVDs)</h4>
+                    <p className="text-sm font-bold mb-4">Form MD-24 & MD-25</p>
+                    <p className="text-sm mb-4 leading-relaxed">Application (MD-24) and Grant (MD-25) of permission to conduct a performance evaluation of a new IVD. This focuses on analytical and clinical performance characteristics.</p>
+                    <p className="text-sm"><strong>GCP Compliance:</strong> All studies must be conducted in accordance with Good Clinical Practice (GCP) guidelines to ensure data integrity and subject safety.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Our Clinical Investigation Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Clinical Investigation Plan (CIP):</strong> A detailed protocol outlining the study's objectives, design, and methodology.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Investigator's Brochure (IB):</strong> A compilation of the clinical and non-clinical data on the device.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Ethics Committee Approval:</strong> Evidence of approval from a registered Ethics Committee.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Informed Consent Document (ICD):</strong> The document used to obtain consent from study participants.</span>
-                  </li>
+                  {[
+                    "Preparation of Clinical Investigation Plan (CIP) and Investigator's Brochure (IB)",
+                    "Support for Ethics Committee (EC) approval and registration",
+                    "Preparation of Case Report Forms (CRFs) and Informed Consent Documents (ICDs)",
+                    "Management of application for MD-22/23/24/25 on SUGAM portal",
+                    "Coordination with Clinical Research Organizations (CROs) and trial sites",
+                    "Support for clinical investigation reports and data analysis",
+                    "Compliance with Good Clinical Practice (GCP) guidelines"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

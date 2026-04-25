@@ -49,39 +49,52 @@ export default function USFDA510k() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of 510(k) Submission</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Understanding the 510(k) Premarket Notification</h2>
                 <p>
-                  A 510(k) is a premarket submission made to the FDA to demonstrate that the device to be marketed is at least as safe and effective, that is, substantially equivalent, to a legally marketed device (predicate device) that is not subject to premarket approval (PMA).
+                  A 510(k) is a premarket submission made to the <InfoLink text="FDA" /> to demonstrate that a medical device is **substantially equivalent (SE)** to a legally marketed device (known as a **predicate device**) that is not subject to Premarket Approval (<InfoLink text="PMA" />). Demonstrating substantial equivalence means the new device is as safe and effective as the predicate.
+                </p>
+                <p>
+                  The 510(k) pathway is the most common route for Class II medical devices to enter the U.S. market. It requires a detailed comparison of the new device's intended use and technological characteristics with those of the predicate device.
                 </p>
                 
-                <div className="bg-blue-50 p-10 rounded-[3rem] border border-blue-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Substantial Equivalence</h4>
-                  <p className="text-sm mb-6">A device is substantially equivalent if, in comparison to a predicate, it:</p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Has the same intended use.</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Has the same technological characteristics.</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Does not raise new questions of safety and effectiveness.</li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Types of 510(k) Submissions</h4>
+                    <ul className="space-y-4 text-sm">
+                      <li><CheckCircle2 className="text-brand-teal inline mr-2" size={16} /> <strong>Traditional:</strong> The standard submission for any new device.</li>
+                      <li><CheckCircle2 className="text-brand-teal inline mr-2" size={16} /> <strong>Abbreviated:</strong> Relies on FDA guidance documents or special controls.</li>
+                      <li><CheckCircle2 className="text-brand-teal inline mr-2" size={16} /> <strong>Special:</strong> For modifications to the manufacturer's own cleared device.</li>
+                    </ul>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">The eSTAR Requirement</h4>
+                    <p className="text-sm leading-relaxed mb-4">As of October 1, 2023, all 510(k) submissions must be submitted electronically using the <InfoLink text="eSTAR" /> (electronic Submission Template And Resource) PDF.</p>
+                    <p className="text-sm font-bold text-brand-teal">Our team is fully proficient in this mandatory format.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Components of a 510(k) Submission</h3>
+                <p>
+                  A successful 510(k) requires more than just a comparison. It must include performance testing (bench testing), biocompatibility data, software validation (if applicable), and clear labeling. We provide a comprehensive gap analysis to ensure your data meets <InfoLink text="FDA" />'s rigorous standards before submission, minimizing the risk of "Refuse to Accept" (RTA) or "Additional Information" (AI) requests.
+                </p>
+
+                <h3 className="text-2xl font-bold text-brand-deep mb-6 mt-12">Our 510(k) Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Device Description:</strong> Detailed information about the device's design, materials, and intended use.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Predicate Device Comparison:</strong> A thorough analysis of how the device compares to the chosen predicate.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Performance Testing:</strong> Bench testing, biocompatibility, and clinical data (if required).</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Software Documentation:</strong> For devices containing software, detailed documentation according to FDA guidance.</span>
-                  </li>
+                  {[
+                    "Identification of appropriate predicate device(s)",
+                    "Preparation of the 510(k) submission package using eSTAR",
+                    "Performance testing data review and gap analysis",
+                    "Biocompatibility and sterilization validation review",
+                    "Software validation and cybersecurity documentation",
+                    "Labeling and Instructions for Use (IFU) review",
+                    "Management of FDA interactions and RTA (Refuse to Accept) responses",
+                    "Support for AI/ML enabled medical devices"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

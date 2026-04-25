@@ -49,44 +49,44 @@ export default function CDSCOLoan() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of Loan Licenses</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Leveraging Existing Infrastructure with Loan Licensing</h2>
                 <p>
-                  A loan license is granted to an entity that does not have its own manufacturing facility but intends to manufacture medical devices by utilizing the licensed manufacturing facility of another entity. This is a common model for startups and companies focusing on design and marketing.
+                  A **Loan License** is a strategic regulatory mechanism under the Medical Devices Rules, 2017, that allows a company (the "Loan Licensee") to manufacture medical devices using the licensed manufacturing facilities of another company (the "Host Manufacturer"). This model is particularly beneficial for startups, R&D-focused firms, and international companies looking to manufacture locally in India without the immediate capital expenditure of building their own facility.
+                </p>
+                <p>
+                  The Loan Licensee remains responsible for the quality, safety, and performance of the devices, while the Host Manufacturer provides the infrastructure, equipment, and sometimes the personnel. A robust **Quality Agreement** and a **Tripartite Agreement** are essential to clearly define the roles and responsibilities of each party.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
                   <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
-                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class A & B Devices</h4>
-                    <p className="text-sm mb-4">Regulated by the State Licensing Authority (SLA).</p>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Application: <InfoLink text="MD-4" /></li>
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Grant: <InfoLink text="MD-6" /></li>
-                    </ul>
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class A & B Loan Licenses</h4>
+                    <p className="text-sm font-bold mb-4">Form MD-4 & MD-6</p>
+                    <p className="text-sm mb-4 leading-relaxed">Application (MD-4) and Grant (MD-6) of a loan license for Class A or Class B medical devices. These are typically managed by the State Licensing Authority (SLA).</p>
+                    <p className="text-sm"><strong>Key Requirements:</strong> Verification of the host's valid manufacturing license (MD-5) and adequacy of their facility.</p>
                   </div>
                   <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
-                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class C & D Devices</h4>
-                    <p className="text-sm mb-4">Regulated by the Central Licensing Authority (CLA/CDSCO).</p>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Application: <InfoLink text="MD-8" /></li>
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Grant: <InfoLink text="MD-10" /></li>
-                    </ul>
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class C & D Loan Licenses</h4>
+                    <p className="text-sm font-bold mb-4">Form MD-8 & MD-10</p>
+                    <p className="text-sm mb-4 leading-relaxed">Application (MD-8) and Grant (MD-10) of a loan license for Class C or Class D medical devices. These are managed by the Central Licensing Authority (CLA).</p>
+                    <p className="text-sm"><strong>Audit & Inspection:</strong> Rigorous inspection of the host facility by CDSCO officials to ensure compliance with QMS requirements.</p>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Our Loan License Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Consent Letter:</strong> A formal agreement from the primary manufacturer allowing the use of their facility.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Device Master File (DMF):</strong> Technical documentation for each device, including design and validation data.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Quality Management System (QMS):</strong> Evidence of compliance with <InfoLink text="ISO 13485" /> or Fifth Schedule of MDR 2017.</span>
-                  </li>
+                  {[
+                    "Identification and audit of potential contract manufacturing sites",
+                    "Preparation of tripartite agreements and quality agreements",
+                    "Technical File and Site Master File review for the loan site",
+                    "Verification of existing manufacturing license of the host site",
+                    "Application submission and follow-up on SUGAM portal",
+                    "Compliance monitoring and audit support"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

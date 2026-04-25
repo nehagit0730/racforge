@@ -49,39 +49,42 @@ export default function USFDAPMA() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of PMA Application</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">The Gold Standard of USFDA Review: Premarket Approval (PMA)</h2>
                 <p>
-                  Premarket approval (PMA) is the FDA process of scientific and regulatory review to evaluate the safety and effectiveness of Class III medical devices. Class III devices are those that support or sustain human life, are of substantial importance in preventing impairment of human health, or which present a potential, unreasonable risk of illness or injury.
+                  **Premarket Approval (PMA)** is the most stringent type of device marketing application required by the <InfoLink text="USFDA" />. It is the process of scientific and regulatory review to evaluate the safety and effectiveness of **Class III medical devices**. These are devices that support or sustain human life, are of substantial importance in preventing impairment of human health, or present a potential, unreasonable risk of illness or injury.
+                </p>
+                <p>
+                  Unlike the 510(k) process, which relies on "substantial equivalence" to a predicate device, a PMA requires the manufacturer to provide **valid scientific evidence**—typically from well-controlled clinical trials—to demonstrate that the device is safe and effective for its intended use.
                 </p>
                 
-                <div className="bg-blue-50 p-10 rounded-[3rem] border border-blue-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Class III Devices</h4>
-                  <p className="text-sm mb-6">Class III devices require a PMA because general and special controls alone are insufficient to provide reasonable assurance of safety and effectiveness.</p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> High-risk devices.</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Life-sustaining or life-supporting devices.</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Devices with no predicate.</li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Modular vs. Traditional PMA</h4>
+                    <p className="text-sm leading-relaxed">The **Modular PMA** allows for the submission of individual sections (modules) as they are completed, facilitating earlier feedback from the FDA. The **Traditional PMA** is a single, complete submission.</p>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Pre-Approval Inspection (PAI)</h4>
+                    <p className="text-sm leading-relaxed mb-4">The FDA will conduct a mandatory inspection of the manufacturing facility to ensure compliance with the **Quality System Regulation (21 CFR 820)** before a PMA can be approved.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Our USFDA PMA Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Clinical Data:</strong> Robust clinical trial data demonstrating safety and effectiveness.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Manufacturing Data:</strong> Detailed information about the manufacturing process and quality controls.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Pre-Clinical Data:</strong> Bench testing, animal studies, and biocompatibility data.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Post-Market Surveillance:</strong> A plan for monitoring the device's performance after it is marketed.</span>
-                  </li>
+                  {[
+                    "Development of a comprehensive PMA strategy and timeline",
+                    "Coordination of pre-submission meetings (Q-Sub) with FDA",
+                    "Preparation of the PMA submission package (Modular or Traditional)",
+                    "Scientific and clinical data analysis and presentation",
+                    "Review of manufacturing processes and quality systems (21 CFR 820)",
+                    "Management of FDA advisory committee meetings",
+                    "Support for post-approval studies and annual reporting",
+                    "Assistance with PMA supplements for device changes"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

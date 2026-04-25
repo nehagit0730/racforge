@@ -542,16 +542,16 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-brand-deep mb-1 text-lg">Headquarters</h4>
-                    <p className="text-gray-600">11, 1 village Nanehar, Thural, Kangra, Jaisinghpur<br />Kangra - 176107, Himachal Pradesh, India</p>
+                    <p className="text-gray-600">RAC FORGE PRIVATE LIMITED 11, 1 village Nanehar, Thural, Kangra, Jaisinghpur Kangra - 176107, Himachal Pradesh</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
                   <div className="w-12 h-12 bg-brand-deep/10 rounded-xl flex items-center justify-center text-brand-deep shrink-0">
-                    <MapPin size={24} />
+                    <Phone size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-brand-deep mb-1 text-lg">Corporate Office</h4>
-                    <p className="text-gray-600">New Delhi, India</p>
+                    <h4 className="font-bold text-brand-deep mb-1 text-lg">Call Us</h4>
+                    <p className="text-gray-600">+91 62396 99077</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">

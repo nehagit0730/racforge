@@ -49,40 +49,48 @@ export default function EUMDRCompliance() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of EU MDR Compliance</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Navigating the EU MDR 2017/745 Transition</h2>
                 <p>
-                  The EU Medical Device Regulation (MDR) 2017/745 has significantly increased the requirements for technical documentation, clinical evidence, and post-market surveillance. Compliance is mandatory for all medical devices marketed in the European Union.
+                  The European Medical Device Regulation (<InfoLink text="EU MDR" />) 2017/745 replaced the previous Medical Device Directive (MDD) and Active Implantable Medical Device Directive (AIMDD). This shift has introduced more stringent requirements for clinical evidence, post-market surveillance, and transparency across the European Union.
+                </p>
+                <p>
+                  One of the most significant changes is the reclassification of many devices and the increased scrutiny from **Notified Bodies**. Manufacturers must now provide more robust **Clinical Evaluation Reports (CER)** and implement a comprehensive **Post-Market Clinical Follow-up (PMCF)** system.
                 </p>
                 
-                <div className="bg-emerald-50 p-10 rounded-[3rem] border border-emerald-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements</h4>
-                  <p className="text-sm mb-6">EU MDR compliance involves several critical components:</p>
-                  <ul className="space-y-4">
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Technical Documentation (Annex II & III).</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> General Safety and Performance Requirements (<InfoLink text="GSPR" />).</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Clinical Evaluation Report (<InfoLink text="CER" />).</li>
-                    <li className="flex items-start text-lg"><CheckCircle2 className="text-brand-teal mr-4 shrink-0 mt-1" size={24} /> Post-Market Surveillance (<InfoLink text="PMS" />) and <InfoLink text="PSUR" />.</li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Technical Documentation (Annex II & III)</h4>
+                    <p className="text-sm leading-relaxed">The MDR requires a more detailed Technical File (Annex II) and a Technical File for Post-Market Surveillance (Annex III). We specialize in assembling these complex dossiers to ensure compliance with the latest standards.</p>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">EUDAMED & UDI Implementation</h4>
+                    <p className="text-sm leading-relaxed">The European Database on Medical Devices (**EUDAMED**) and the Unique Device Identification (**UDI**) system are central to MDR transparency. We assist in registration and data management for these critical systems.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">The Role of the PRRC</h3>
+                <p>
+                  Under Article 15 of the MDR, every manufacturer must have at least one **Person Responsible for Regulatory Compliance (PRRC)**. This individual is responsible for ensuring that the conformity of the devices is appropriately checked, that technical documentation is kept up-to-date, and that post-market surveillance obligations are met. We provide strategic consulting to help your PRRC navigate these responsibilities.
+                </p>
+
+                <h3 className="text-2xl font-bold text-brand-deep mb-6 mt-12">Our EU MDR Compliance Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Risk Management:</strong> A comprehensive risk management system according to <InfoLink text="ISO 14971" />.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Clinical Evaluation:</strong> Robust clinical evidence demonstrating the safety and performance of the device.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Quality Management System (QMS):</strong> Evidence of compliance with <InfoLink text="ISO 13485" />.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Unique Device Identification (UDI):</strong> Implementation of the <InfoLink text="UDI" /> system for traceability.</span>
-                  </li>
+                  {[
+                    "Gap analysis of existing MDD/AIMDD technical files",
+                    "Preparation of MDR-compliant Technical Documentation (Annex II & III)",
+                    "Clinical Evaluation Report (CER) updates and gap analysis",
+                    "Post-Market Surveillance (PMS) and PMCF plan development",
+                    "Periodic Safety Update Report (PSUR) preparation",
+                    "UDI implementation and EUDAMED registration support",
+                    "Quality Management System (QMS) updates for ISO 13485:2016",
+                    "Person Responsible for Regulatory Compliance (PRRC) support",
+                    "Coordination with Notified Bodies for conformity assessment"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

@@ -49,48 +49,53 @@ export default function CDSCOManufacturing() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of Manufacturing Licenses</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Understanding CDSCO Manufacturing Licenses</h2>
                 <p>
-                  Under the Medical Devices Rules, 2017, any entity wishing to manufacture medical devices for sale or distribution in India must obtain a manufacturing license from the appropriate licensing authority. The classification of the device determines whether the license is granted by the State Licensing Authority (SLA) or the Central Licensing Authority (CLA).
+                  In India, the Central Drugs Standard Control Organization (<InfoLink text="CDSCO" />) is the national regulatory body for pharmaceuticals and medical devices. Under the Medical Devices Rules (<InfoLink text="MDR" />) 2017, all medical devices are classified based on risk into four categories: Class A (Low Risk), Class B (Low-Moderate Risk), Class C (Moderate-High Risk), and Class D (High Risk).
+                </p>
+                <p>
+                  Obtaining a manufacturing license is a multi-step process that involves rigorous documentation, facility audits, and technical file reviews. For Class A and B devices, the State Licensing Authority (<InfoLink text="SLA" />) is primarily responsible, while Class C and D devices fall under the Central Licensing Authority (<InfoLink text="CLA" />).
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
                   <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
-                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class A & B Devices</h4>
-                    <p className="text-sm mb-4">Regulated by the State Licensing Authority (SLA).</p>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Application: <InfoLink text="MD-3" /></li>
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Grant: <InfoLink text="MD-5" /></li>
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class A & B Devices (SLA)</h4>
+                    <p className="text-sm mb-4 leading-relaxed">Class A includes non-invasive devices like surgical dressings and Class B includes moderately invasive devices like hypodermic needles. These require an audit by a Notified Body before the SLA grants the license.</p>
+                    <ul className="space-y-4 text-sm">
+                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2 shrink-0" size={16} /> <strong>Form MD-3 (Application):</strong> The initial application submitted via the SUGAM portal.</li>
+                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2 shrink-0" size={16} /> <strong>Form MD-5 (License):</strong> The final license issued by the SLA after successful audit.</li>
                     </ul>
                   </div>
                   <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
-                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class C & D Devices</h4>
-                    <p className="text-sm mb-4">Regulated by the Central Licensing Authority (CLA/CDSCO).</p>
-                    <ul className="space-y-2 text-sm">
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Application: <InfoLink text="MD-7" /></li>
-                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2" size={16} /> Grant: <InfoLink text="MD-9" /></li>
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Class C & D Devices (CLA)</h4>
+                    <p className="text-sm mb-4 leading-relaxed">Class C includes high-risk devices like hemodialyzers and Class D includes critical devices like cardiac stents. These require a direct audit by CDSCO officials (CLA).</p>
+                    <ul className="space-y-4 text-sm">
+                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-4 shrink-0" size={16} /> <strong>Form MD-7 (Application):</strong> Requires extensive clinical evidence and performance data.</li>
+                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-4 shrink-0" size={16} /> <strong>Form MD-9 (License):</strong> Issued by the CLA (DCGI) for high-risk devices.</li>
                     </ul>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">The SUGAM Portal & Application Process</h3>
+                <p>
+                  All applications are processed through the <InfoLink text="SUGAM" /> online portal. This digital interface facilitates the submission, tracking, and approval of licenses. Our team manages the entire portal interaction, ensuring that all technical files, site master files, and plant master files are uploaded correctly to avoid queries and delays.
+                </p>
+
+                <h3 className="text-2xl font-bold text-brand-deep mb-6 mt-12">Our Deliverables</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Site Master File (SMF):</strong> Detailed documentation of the manufacturing facility, including layout, environmental controls, and personnel.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Device Master File (DMF):</strong> Technical documentation for each device, including design, materials, manufacturing process, and validation data.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Quality Management System (QMS):</strong> Evidence of compliance with <InfoLink text="ISO 13485" /> or Fifth Schedule of MDR 2017.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Performance Evaluation:</strong> Reports demonstrating the safety and effectiveness of the device.</span>
-                  </li>
+                  {[
+                    "Preparation of Site Master File (SMF) and Plant Master File (PMF)",
+                    "Technical File assembly including Device Description and Specification",
+                    "Risk Management Report as per ISO 14971",
+                    "Performance Evaluation Report (PER) and Clinical Evidence",
+                    "QMS Documentation and Internal Audit Support",
+                    "Online Application Management on SUGAM Portal"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

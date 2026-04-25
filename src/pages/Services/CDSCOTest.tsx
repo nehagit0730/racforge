@@ -49,33 +49,44 @@ export default function CDSCOTest() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of Test Licenses</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Facilitating Research and Development with Test Licenses</h2>
                 <p>
-                  A test license is required for the import or manufacture of small quantities of medical devices for the purposes of testing, evaluation, demonstration, or training. This is a crucial step for companies developing new products or seeking to validate foreign devices in the Indian context.
+                  Before a medical device can be manufactured or imported for sale, it often requires testing, evaluation, or clinical investigation. A **Test License** allows for these activities under the Medical Devices Rules, 2017. This is a critical step for manufacturers to validate their designs, conduct performance testing, and gather the necessary data for a full manufacturing or import license.
+                </p>
+                <p>
+                  The test license is strictly for the purposes of clinical investigations, testing, evaluation, demonstration, or training. Devices imported or manufactured under this license **cannot be sold** or used for commercial purposes.
                 </p>
                 
-                <div className="bg-gray-50 p-10 rounded-[3rem] border border-gray-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Key Forms</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-center text-lg"><CheckCircle2 className="text-brand-teal mr-4" size={24} /> Application: <InfoLink text="MD-16" /></li>
-                    <li className="flex items-center text-lg"><CheckCircle2 className="text-brand-teal mr-4" size={24} /> Grant: <InfoLink text="MD-17" /></li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Manufacturing for Test & Evaluation</h4>
+                    <p className="text-sm font-bold mb-4">Form MD-12 & MD-13</p>
+                    <p className="text-sm mb-4 leading-relaxed">Application (MD-12) and Grant (MD-13) of a license to **manufacture** medical devices for the purposes of clinical investigations, test, evaluation, demonstration, or training.</p>
+                    <p className="text-sm"><strong>Key Requirements:</strong> Detailed protocols for the proposed testing and justification for the quantity of devices to be manufactured.</p>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">Importing for Test & Evaluation</h4>
+                    <p className="text-sm font-bold mb-4">Form MD-16 & MD-17</p>
+                    <p className="text-sm mb-4 leading-relaxed">Application (MD-16) and Grant (MD-17) of a license to **import** medical devices for the purposes of clinical investigations, test, evaluation, demonstration, or training.</p>
+                    <p className="text-sm"><strong>Customs Clearance:</strong> The MD-17 license is essential for the smooth customs clearance of test samples arriving from international manufacturers.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Our Test License Consulting Services</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Purpose of Import/Manufacture:</strong> A clear statement of why the devices are needed (e.g., performance testing, clinical trial).</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Technical Specifications:</strong> Detailed information about the device's design and intended use.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Quantity Justification:</strong> Rationale for the number of devices requested.</span>
-                  </li>
+                  {[
+                    "Preparation of application for MD-16 and MD-17",
+                    "Justification for the quantity of devices required for testing",
+                    "Review of testing protocols and evaluation plans",
+                    "Coordination with testing laboratories and clinical sites",
+                    "Management of import/manufacture records as per CDSCO rules",
+                    "Support for subsequent clinical investigation applications"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

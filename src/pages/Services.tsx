@@ -101,10 +101,24 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed"
           >
-            Strategic guidance and thorough documentation for global medical device compliance.
+            End-to-end regulatory solutions for medical device manufacturers worldwide. From initial R&D to final market approval.
           </motion.p>
+        </div>
+      </section>
+
+      {/* Services Intro Content */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <p className="text-xl text-gray-600 leading-relaxed">
+              We provide a comprehensive suite of services designed to navigate the complexities of global medical device regulations. Our approach is rooted in technical excellence and strategic foresight, ensuring that your products not only meet current standards but are also prepared for future regulatory shifts.
+            </p>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Whether you are looking to enter the Indian market with a <InfoLink text="CDSCO" /> license, the U.S. market through a <InfoLink text="USFDA 510(k)" /> or <InfoLink text="PMA" />, or the European market under the <InfoLink text="EU MDR" />, our team has the expertise to guide you through every step of the process. We also specialize in Software as a Medical Device (<InfoLink text="SaMD" />) and technical <InfoLink text="R&D" /> strategy.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -151,33 +165,26 @@ export default function Services() {
             <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-teal/10 skew-x-12 translate-x-1/4"></div>
             <div className="relative z-10 max-w-3xl">
               <h2 className="text-3xl md:text-5xl font-extrabold mb-10">Why Partner with RAC Forge?</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-brand-teal p-2 rounded-lg shrink-0"><CheckCircle size={20} /></div>
+              <div className="grid grid-cols-1 gap-12 mt-12">
+                <div className="flex items-start space-x-6">
+                  <div className="bg-brand-teal p-3 rounded-2xl shrink-0"><CheckCircle size={24} /></div>
                   <div>
-                    <h4 className="font-bold text-xl mb-2">Technical Depth</h4>
-                    <p className="text-white/70 text-sm">Our R&D background ensures we understand the science behind your device.</p>
+                    <h4 className="font-bold text-2xl mb-2">Technical Expertise</h4>
+                    <p className="text-white/70 text-lg leading-relaxed">10+ years of R&D experience means we understand your device's mechanics, not just the rules.</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-brand-teal p-2 rounded-lg shrink-0"><CheckCircle size={20} /></div>
+                <div className="flex items-start space-x-6">
+                  <div className="bg-brand-teal p-3 rounded-2xl shrink-0"><CheckCircle size={24} /></div>
                   <div>
-                    <h4 className="font-bold text-xl mb-2">Global Reach</h4>
-                    <p className="text-white/70 text-sm">Expertise in India, USA, EU, and Brazil markets.</p>
+                    <h4 className="font-bold text-2xl mb-2">Thorough Documentation</h4>
+                    <p className="text-white/70 text-lg leading-relaxed">We handle the heavy lifting of technical file assembly, GSPR checklists, and risk management.</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-brand-teal p-2 rounded-lg shrink-0"><CheckCircle size={20} /></div>
+                <div className="flex items-start space-x-6">
+                  <div className="bg-brand-teal p-3 rounded-2xl shrink-0"><CheckCircle size={24} /></div>
                   <div>
-                    <h4 className="font-bold text-xl mb-2">Expedited Process</h4>
-                    <p className="text-white/70 text-sm">Strategic coordination with Notified Bodies and Authorities.</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-brand-teal p-2 rounded-lg shrink-0"><CheckCircle size={20} /></div>
-                  <div>
-                    <h4 className="font-bold text-xl mb-2">End-to-End Support</h4>
-                    <p className="text-white/70 text-sm">From initial classification to post-market surveillance.</p>
+                    <h4 className="font-bold text-2xl mb-2">Strategic Pathways</h4>
+                    <p className="text-white/70 text-lg leading-relaxed">We identify the most efficient regulatory route to save you time and resources.</p>
                   </div>
                 </div>
               </div>

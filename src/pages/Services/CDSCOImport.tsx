@@ -49,37 +49,45 @@ export default function CDSCOImport() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-8 space-y-12">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Overview of Import Licenses</h2>
+                <h2 className="text-3xl font-extrabold text-brand-deep mb-6">Navigating the CDSCO Import Process</h2>
                 <p>
-                  Any entity wishing to import medical devices into India for sale or distribution must obtain an import license from the Central Licensing Authority (CDSCO). The process involves demonstrating that the device is already approved in its country of origin and meets Indian safety and performance standards.
+                  For foreign manufacturers looking to enter the Indian market, the regulatory landscape is governed by the Central Drugs Standard Control Organization (<InfoLink text="CDSCO" />). The primary requirement for importing medical devices is the appointment of an **Indian Authorized Agent (IAA)**. This agent must hold a valid wholesale license and is responsible for all regulatory interactions with the CDSCO on behalf of the foreign manufacturer.
+                </p>
+                <p>
+                  The import process is centered around the **Form MD-14** application and the subsequent **Form MD-15** license. This ensures that the devices being imported meet the same safety and quality standards as those manufactured domestically in India.
                 </p>
                 
-                <div className="bg-gray-50 p-10 rounded-[3rem] border border-gray-100 my-12">
-                  <h4 className="text-2xl font-bold text-brand-deep mb-6">Key Forms</h4>
-                  <ul className="space-y-4">
-                    <li className="flex items-center text-lg"><CheckCircle2 className="text-brand-teal mr-4" size={24} /> Application: <InfoLink text="MD-14" /></li>
-                    <li className="flex items-center text-lg"><CheckCircle2 className="text-brand-teal mr-4" size={24} /> Grant: <InfoLink text="MD-15" /></li>
-                  </ul>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
+                  <div className="bg-orange-50 p-8 rounded-[2rem] border border-orange-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">The Import Licensing Framework</h4>
+                    <p className="text-sm mb-4">The application process requires a comprehensive set of documents from the foreign manufacturing site, including proof of quality management and product safety.</p>
+                    <ul className="space-y-4 text-sm font-bold">
+                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2 shrink-0" size={16} /> Form MD-14 (Application)</li>
+                      <li className="flex items-center"><CheckCircle2 className="text-brand-teal mr-2 shrink-0" size={16} /> Form MD-15 (License)</li>
+                    </ul>
+                  </div>
+                  <div className="bg-blue-50 p-8 rounded-[2rem] border border-blue-100">
+                    <h4 className="text-xl font-bold text-brand-deep mb-4">The Role of the IAA</h4>
+                    <p className="text-sm leading-relaxed">The IAA acts as the legal representative in India. Their responsibilities include submitting the MD-14 application, managing post-market surveillance (PMS), handling adverse event reporting, and ensuring compliance with the labeling requirements of the Medical Devices Rules, 2017.</p>
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-brand-deep mb-6">Key Requirements for Application</h3>
+                <h3 className="text-2xl font-bold text-brand-deep mb-6">Essential Documentation for MD-14</h3>
+                <p className="mb-6">A successful MD-14 application requires several critical documents from the global manufacturing site:</p>
                 <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Free Sale Certificate (FSC):</strong> Proof of approval and sale in the country of origin.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Plant Master File (PMF):</strong> Detailed documentation of the foreign manufacturing facility.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Device Master File (DMF):</strong> Technical documentation for each device, including design, materials, and validation data.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
-                    <span><strong>Performance Evaluation:</strong> Reports demonstrating the safety and effectiveness of the device.</span>
-                  </li>
+                  {[
+                    "Power of Attorney (PoA) documentation for Indian Authorized Agent",
+                    "Free Sale Certificate (FSC) from the country of origin",
+                    "Device Master File (DMF) and Plant Master File (PMF) review",
+                    "ISO 13485 Quality Management System certification review",
+                    "Labeling and Instructions for Use (IFU) compliance with Indian rules",
+                    "Post-Market Surveillance (PMS) reporting support"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <Zap className="text-brand-teal mr-4 shrink-0 mt-1" size={20} />
+                      <span className="font-bold text-brand-deep">{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

@@ -80,18 +80,12 @@ export default function Navbar() {
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-brand-deep rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-brand-deep/20">
-              <span className="text-white font-black text-2xl">RF</span>
-            </div>
-            <div className="flex flex-col">
-              <span className={cn("font-black text-2xl tracking-tighter leading-none", scrolled ? "text-brand-deep" : "text-white")}>
-                RAC FORGE
-              </span>
-              <span className={cn("text-[10px] font-bold tracking-[0.2em] uppercase", scrolled ? "text-brand-teal" : "text-brand-teal")}>
-                Regulatory Consulting
-              </span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src="https://racforge.com/wp-content/uploads/2026/04/logo.png" 
+              alt="RAC FORGE" 
+              className={cn("h-12 w-auto transition-all duration-500", scrolled ? "" : "brightness-0 invert")} 
+            />
           </Link>
 
           {/* Desktop Nav */}

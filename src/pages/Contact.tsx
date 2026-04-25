@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Clock, Send, Globe, MessageSquare, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Globe, MessageSquare, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function Contact() {
@@ -65,8 +65,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-bold text-brand-deep mb-1 text-xl">Headquarters</h4>
                     <p className="text-gray-600 leading-relaxed">
-                      11, 1 village Nanehar, Thural, Kangra, Jaisinghpur<br />
-                      Kangra - 176107, Himachal Pradesh, India
+                      RAC FORGE PRIVATE LIMITED 11, 1 village Nanehar, Thural, Kangra, Jaisinghpur Kangra - 176107, Himachal Pradesh
                     </p>
                   </div>
                 </div>
@@ -93,23 +92,29 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-6 group">
+                <div className="flex items-center space-x-6 group" title="Support Number">
                   <div className="w-14 h-14 bg-brand-deep/10 rounded-2xl flex items-center justify-center text-brand-deep shrink-0 group-hover:bg-brand-deep group-hover:text-white transition-all">
-                    <Clock size={28} />
+                    <Phone size={28} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-brand-deep mb-1 text-xl">Working Hours</h4>
-                    <p className="text-gray-600 leading-relaxed">Mon - Fri: 9:00 AM - 6:00 PM IST</p>
+                    <h4 className="font-bold text-brand-deep mb-1 text-xl">Call Us</h4>
+                    <p className="text-gray-600 leading-relaxed">+91 62396 99077</p>
                   </div>
                 </div>
               </div>
 
               <div className="pt-10 border-t border-gray-100">
                 <h4 className="text-xl font-bold text-brand-deep mb-6">Follow Us</h4>
-                <div className="flex space-x-4">
-                  {['Facebook', 'Twitter', 'Linkedin', 'Instagram'].map((item) => (
-                    <a key={item} href="#" className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center hover:bg-brand-teal hover:text-white transition-all transform hover:scale-110">
-                      <Globe size={20} />
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    { icon: Facebook, href: "https://www.facebook.com/people/R-A-C-Forge-Private-Limited/61584695412489/" },
+                    { icon: Twitter, href: "https://x.com/RACForge" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/company/rac-forge/" },
+                    { icon: Instagram, href: "https://www.instagram.com/racforge/" },
+                    { icon: Youtube, href: "https://www.youtube.com/@RACForge" }
+                  ].map((item, idx) => (
+                    <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center hover:bg-brand-teal hover:text-white transition-all transform hover:scale-110">
+                      <item.icon size={20} />
                     </a>
                   ))}
                 </div>

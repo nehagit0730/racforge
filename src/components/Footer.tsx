@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight, Youtube } from 'lucide-react';
 
 export default function Footer() {
+  const socialLinks = [
+    { icon: Facebook, href: "https://www.facebook.com/people/R-A-C-Forge-Private-Limited/61584695412489/" },
+    { icon: Twitter, href: "https://x.com/RACForge" },
+    { icon: Instagram, href: "https://www.instagram.com/racforge/" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/rac-forge/" },
+    { icon: Youtube, href: "https://www.youtube.com/@RACForge" }
+  ];
   return (
     <footer className="bg-brand-deep text-white pt-24 pb-12 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-teal/5 skew-x-12 translate-x-1/2"></div>
@@ -11,26 +18,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Column 1: Brand & About */}
           <div className="space-y-8">
-            <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 bg-brand-teal rounded-xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500 shadow-lg shadow-brand-teal/20">
-                <span className="text-white font-black text-2xl">RF</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-black text-2xl tracking-tighter leading-none text-white">
-                  RAC FORGE
-                </span>
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-teal">
-                  Regulatory Consulting
-                </span>
-              </div>
+            <Link to="/" className="flex items-center group">
+              <img 
+                src="https://racforge.com/wp-content/uploads/2026/04/logo.png" 
+                alt="RAC FORGE" 
+                className="h-12 w-auto brightness-0 invert" 
+              />
             </Link>
             <p className="text-white/60 leading-relaxed text-sm">
               Navigating global regulatory landscapes with precision and expertise. Your strategic partner for CDSCO, USFDA, EU MDR, and Anvisa compliance.
             </p>
-            <div className="flex space-x-4">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-brand-teal transition-all transform hover:scale-110">
-                  <Icon size={20} />
+            <div className="flex flex-wrap gap-4">
+              {socialLinks.map((social, i) => (
+                <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-brand-teal transition-all transform hover:scale-110">
+                  <social.icon size={20} />
                 </a>
               ))}
             </div>
@@ -87,14 +88,14 @@ export default function Footer() {
                   <MapPin size={20} className="text-brand-teal group-hover:text-white" />
                 </div>
                 <span className="text-white/60 text-sm leading-relaxed">
-                  11, 1 village Nanehar, Thural, Kangra, Jaisinghpur, Himachal Pradesh - 176107
+                  RAC FORGE PRIVATE LIMITED 11, 1 village Nanehar, Thural, Kangra, Jaisinghpur Kangra - 176107, Himachal Pradesh
                 </span>
               </li>
               <li className="flex items-center space-x-4 group">
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-teal transition-colors">
                   <Phone size={20} className="text-brand-teal group-hover:text-white" />
                 </div>
-                <span className="text-white/60 text-sm">+91-XXXXXXXXXX</span>
+                <span className="text-white/60 text-sm">+91 62396 99077</span>
               </li>
               <li className="flex items-center space-x-4 group">
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-teal transition-colors">
