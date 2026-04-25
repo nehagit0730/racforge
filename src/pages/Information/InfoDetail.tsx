@@ -6,67 +6,67 @@ import SEO from '../../components/SEO';
 const INFO_DATA: Record<string, { title: string; content: string }> = {
   'md-16': {
     title: 'Form MD-16',
-    content: 'Form MD-16 is the application for a license to import medical devices for the purposes of clinical investigations, testing, evaluation, demonstration, or training under the Medical Devices Rules, 2017.'
+    content: 'Form MD-16 is the official application required for obtaining permission to import medical devices into India for clinical investigation, testing, evaluation, demonstration, or training purposes under the Medical Devices Rules, 2017. Regulated by the Central Drugs Standard Control Organization (CDSCO), Form MD-16 is essential for manufacturers, importers, and research organizations seeking approval for investigational use of medical devices. It ensures compliance with Indian regulatory requirements, safety standards, and clinical evaluation guidelines.'
   },
   'md-17': {
     title: 'Form MD-17',
-    content: 'Form MD-17 is the license granted by the Central Licensing Authority to import medical devices for the purposes of clinical investigations, testing, evaluation, demonstration, or training.'
+    content: 'Form MD-17 is the official license issued for the import of medical devices into India for clinical investigation, testing, evaluation, demonstration, or training purposes under the Medical Devices Rules, 2017. Granted by the Central Drugs Standard Control Organization (CDSCO), Form MD-17 authorizes manufacturers and importers to legally bring investigational medical devices into India. It ensures compliance with regulatory requirements, safety standards, and clinical evaluation guidelines set by Indian authorities.'
   },
   'md-3': {
     title: 'Form MD-3',
-    content: 'Form MD-3 is the application for a license to manufacture for sale or for distribution of Class A or Class B medical devices.'
+    content: 'Form MD-3 is the official application used to obtain a manufacturing license for Class A and Class B medical devices in India under the Medical Devices Rules, 2017. Regulated by the Central Drugs Standard Control Organization (CDSCO), this form is submitted by manufacturers to the State Licensing Authority for approval. Form MD-3 ensures that medical devices meet required safety, quality, and regulatory compliance standards before being manufactured for sale or distribution in India.'
   },
   'md-5': {
     title: 'Form MD-5',
-    content: 'Form MD-5 is the license to manufacture for sale or for distribution of Class A or Class B medical devices.'
+    content: 'Form MD-5 is the official manufacturing license issued for Class A and Class B medical devices in India under the Medical Devices Rules, 2017. Granted by the State Licensing Authority in coordination with the Central Drugs Standard Control Organization (CDSCO), Form MD-5 authorizes manufacturers to legally produce, sell, and distribute low to moderate risk medical devices. It ensures compliance with Indian regulatory standards, quality requirements, and safety guidelines for medical device manufacturing.'
   },
   'md-7': {
     title: 'Form MD-7',
-    content: 'Form MD-7 is the application for a license to manufacture for sale or for distribution of Class C or Class D medical devices.'
+    content: 'Form MD-7 is the official application required to obtain a manufacturing license for Class C and Class D medical devices in India under the Medical Devices Rules, 2017. Regulated by the Central Drugs Standard Control Organization (CDSCO), this form is submitted to the Central Licensing Authority for approval. Form MD-7 is essential for manufacturers dealing with moderate to high-risk medical devices and ensures strict compliance with safety standards, quality requirements, and regulatory guidelines before production and distribution.'
   },
   'md-9': {
     title: 'Form MD-9',
-    content: 'Form MD-9 is the license to manufacture for sale or for distribution of Class C or Class D medical devices.'
+    content: 'Form MD-9 is the official manufacturing license issued for Class C and Class D medical devices in India under the Medical Devices Rules, 2017. Granted by the Central Licensing Authority under the Central Drugs Standard Control Organization (CDSCO), Form MD-9 authorizes manufacturers to produce, sell, and distribute moderate to high-risk medical devices. It ensures strict compliance with Indian regulatory standards, safety requirements, and quality guidelines, making it essential for companies manufacturing critical medical devices.'
   },
   'md-14': {
     title: 'Form MD-14',
-    content: 'Form MD-14 is the application for a license to import medical devices into India.'
+    content: 'Form MD-14 is the official application required to obtain an import license for medical devices in India under the Medical Devices Rules, 2017. Regulated by the Central Drugs Standard Control Organization (CDSCO), this form is submitted by importers or authorized agents to the Central Licensing Authority for approval. Form MD-14 is essential for ensuring that imported medical devices meet Indian safety standards, quality requirements, and regulatory compliance before entering the market.'
   },
   'md-15': {
     title: 'Form MD-15',
-    content: 'Form MD-15 is the license to import medical devices into India.'
+    content: 'Form MD-15 is the official import license issued for medical devices in India under the Medical Devices Rules, 2017. Granted by the Central Licensing Authority under the Central Drugs Standard Control Organization (CDSCO), Form MD-15 authorizes importers to legally import, distribute, and market medical devices in India. It ensures that all imported devices comply with Indian regulatory standards, safety requirements, and quality guidelines before being made available in the market.'
   },
   'class-a': {
     title: 'Class A Medical Device',
-    content: 'Class A medical devices are categorized as low-risk devices under the CDSCO classification system. Examples include surgical dressings, alcohol swabs, and mechanical wheelchairs.'
+    content: 'Class A Medical Devices are categorized as low-risk devices under the Medical Devices Rules, 2017 in India. Regulated by the Central Drugs Standard Control Organization (CDSCO), these devices typically have minimal impact on patient health and require basic regulatory controls. Common examples include surgical dressings, tongue depressors, alcohol swabs, and simple hospital equipment. Manufacturers of Class A medical devices must still comply with quality standards and registration requirements, but the approval process is simpler compared to higher-risk categories. These devices are subject to general safety and performance guidelines to ensure safe usage in healthcare settings.'
   },
   'class-b': {
     title: 'Class B Medical Device',
-    content: 'Class B medical devices are categorized as low-moderate risk devices. Examples include hypodermic needles, suction equipment, and blood pressure monitors.'
+    content: 'Class B Medical Devices are categorized as low to moderate risk devices under the Medical Devices Rules, 2017 in India. Regulated by the Central Drugs Standard Control Organization (CDSCO), these devices have a moderate impact on patient health and therefore require stricter regulatory control compared to Class A devices. Common examples include hypodermic needles, suction equipment, and blood pressure monitors. Manufacturers must obtain proper licensing, follow quality management systems, and ensure compliance with CDSCO regulations to maintain safety, performance, and effectiveness standards in the Indian healthcare market.'
   },
   'class-c': {
     title: 'Class C Medical Device',
-    content: 'Class C medical devices are categorized as moderate-high risk devices. Examples include hemodialyzers, bone cements, and infusion pumps.'
+    content: 'Class C Medical Devices are categorized as moderate to high-risk devices under the Medical Devices Rules, 2017 in India. Regulated by the Central Drugs Standard Control Organization (CDSCO), these devices have a significant impact on patient health and therefore require strict regulatory approval, detailed technical documentation, and clinical evaluation. Common examples include infusion pumps, bone cements, and hemodialyzers. Manufacturers must comply with rigorous quality management systems and obtain approval from the Central Licensing Authority to ensure safety, performance, and effectiveness before these devices can be marketed in India.'
   },
   'class-d': {
     title: 'Class D Medical Device',
-    content: 'Class D medical devices are categorized as high-risk devices. Examples include cardiac stents, heart valves, and implantable defibrillators.'
+    content: 'Class D Medical Devices are categorized as high-risk devices under the Medical Devices Rules, 2017 in India. Regulated by the Central Drugs Standard Control Organization (CDSCO), these devices are critical to patient survival and require the highest level of regulatory scrutiny, clinical evaluation, and approval. Common examples include cardiac stents, heart valves, implantable defibrillators, and life-supporting devices. Manufacturers must undergo rigorous approval processes, including detailed clinical trials, quality audits, and strict compliance with CDSCO guidelines to ensure maximum safety, effectiveness, and performance before entering the Indian market.'
   },
   'eu-mdr': {
     title: 'EU MDR (Medical Device Regulation)',
-    content: 'The EU Medical Device Regulation (2017/745) is the regulatory framework for medical devices in the European Union, focusing on safety, performance, and clinical evidence.'
+    content: 'EU MDR (Medical Device Regulation 2017/745) is the comprehensive regulatory framework governing medical devices in the European Union. It replaces the earlier Medical Device Directive (MDD) and introduces stricter requirements for safety, clinical evaluation, risk management, and post-market surveillance. EU MDR ensures that all medical devices placed on the EU market meet high standards of quality, safety, and performance. It applies to manufacturers, importers, and distributors, requiring detailed technical documentation, clinical evidence, and conformity assessments through notified bodies. The regulation also emphasizes transparency, traceability, and continuous monitoring of devices throughout their lifecycle.'
   },
   'usfda': {
     title: 'USFDA (U.S. Food and Drug Administration)',
-    content: 'The USFDA is the federal agency responsible for protecting public health by ensuring the safety, efficacy, and security of medical devices in the United States.'
+    content: 'USFDA (U.S. Food and Drug Administration) is the primary regulatory authority in the United States responsible for ensuring the safety, effectiveness, and security of drugs, medical devices, biologics, and food products. Operating under the U.S. Department of Health and Human Services, the USFDA plays a critical role in protecting public health through strict regulatory oversight. For medical devices, the USFDA regulates product approval, clinical trials, manufacturing standards, and post-market surveillance. It requires manufacturers to comply with quality system regulations (QSR), submit premarket approvals (PMA) or 510(k) clearances, and maintain ongoing compliance to ensure device safety and performance in the U.S. market.'
   },
   'cdsco': {
     title: 'CDSCO (Central Drugs Standard Control Organization)',
-    content: 'CDSCO is India\'s national regulatory body for pharmaceuticals and medical devices, operating under the Ministry of Health and Family Welfare.'
+    content: 'The Central Drugs Standard Control Organization (CDSCO) is the official drug regulatory authority in India responsible for the approval and regulation of drugs, medical devices, and cosmetics. Operating under the Ministry of Health and Family Welfare, CDSCO ensures that all healthcare products meet required safety, quality, and effectiveness standards. Key functions of CDSCO include new drug approval, clinical trial supervision, drug import regulation, and enforcement of the Drugs and Cosmetics Act. It plays a vital role in maintaining public health and ensuring safe medical practices in India.'
   },
   'samd': {
     title: 'SaMD (Software as a Medical Device)',
-    content: 'SaMD is software intended to be used for one or more medical purposes that perform these purposes without being part of a hardware medical device.'
+    content: 'SaMD (Software as a Medical Device) refers to software that is intended to perform medical functions without being part of a physical medical device. It can run on computers, mobile apps, or cloud platforms and is used for diagnosis, monitoring, treatment, or prevention of diseases. In India, SaMD is regulated under the Central Drugs Standard Control Organization (CDSCO) as per the Medical Devices Rules, 2017, depending on its risk classification. Globally, regulatory bodies like the USFDA and EU MDR also provide guidelines for SaMD to ensure safety, clinical performance, cybersecurity, and data protection. Manufacturers must comply with quality standards, clinical validation, and regulatory requirements before deploying SaMD solutions in healthcare.'
   }
 };
 
