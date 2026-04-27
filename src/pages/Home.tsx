@@ -131,10 +131,6 @@ export default function Home() {
                 <span className="font-bold">10+ Years R&D Experience</span>
               </div>
               <div className="flex items-center space-x-3 text-white/90">
-                <CheckSquare className="text-brand-teal" size={24} />
-                <span className="font-bold">500+ Successful Submissions</span>
-              </div>
-              <div className="flex items-center space-x-3 text-white/90">
                 <Award className="text-brand-teal" size={24} />
                 <span className="font-bold">AiMeD Associate Member</span>
               </div>
