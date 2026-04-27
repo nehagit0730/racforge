@@ -1,32 +1,118 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, Calendar, User, Tag as TagIcon, Share2, Facebook, Twitter, Linkedin, MessageSquare, Send, CornerDownRight } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import SEO from '../components/SEO';
 import { BLOG_POSTS } from '../data/blogData';
+import { db, auth } from '../lib/firebase';
+import { 
+  collection, 
+  addDoc, 
+  onSnapshot, 
+  query, 
+  where, 
+  orderBy, 
+  serverTimestamp,
+  Timestamp 
+} from 'firebase/firestore';
+
+enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: any;
+}
+
+function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: auth.currentUser?.uid,
+      email: auth.currentUser?.email,
+      emailVerified: auth.currentUser?.emailVerified,
+    },
+    operationType,
+    path
+  };
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
+
+interface CommentData {
+  id: string;
+  author: string;
+  role: string;
+  text: string;
+  createdAt: any;
+  replies?: ReplyData[];
+}
+
+interface ReplyData {
+  id: string;
+  author: string;
+  text: string;
+  createdAt: any;
+  isStaff?: boolean;
+}
 
 export default function BlogPost() {
   const { id } = useParams<{ id: string }>();
   const post = BLOG_POSTS.find(p => p.id === id);
-  const [comment, setComment] = useState('');
-  const [comments, setComments] = useState<any[]>([
-    {
-      id: 1,
-      author: 'Sameer Kumar',
-      role: 'Quality Assurance Manager at MedTech',
-      text: 'Great article on sterilization validation. We are currently looking for EO residues testing according to ISO 10993-7. Does RAC Forge provide and suggest regarding labs?',
-      date: '26 Oct 2025',
-      replies: [
-        {
-          id: 101,
-          author: 'RAC Forge Team',
-          text: 'Thank you Sameer! Yes, we assist in selecting accredited labs and designing testing strategies that comply with both ISO 10993-7 and ISO 11135. Feel free to contact us for a detailed discussion.',
-          date: '27 Oct 2025'
-        }
-      ]
-    }
-  ]);
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState<CommentData[]>([]);
+  const [replyText, setReplyText] = useState<{ [key: string]: string }>({});
+  const [activeReplyId, setActiveReplyId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!id) return;
+
+    const q = query(
+      collection(db, 'blog_comments'),
+      where('postId', '==', id),
+      orderBy('createdAt', 'desc')
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedComments = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        replies: []
+      } as CommentData));
+      
+      setComments(fetchedComments);
+
+      // Fetch replies for each comment
+      snapshot.docs.forEach(commentDoc => {
+        const repliesQ = query(
+          collection(db, `blog_comments/${commentDoc.id}/replies`),
+          orderBy('createdAt', 'asc')
+        );
+
+        onSnapshot(repliesQ, (replySnapshot) => {
+          const replies = replySnapshot.docs.map(rd => ({
+            id: rd.id,
+            ...rd.data()
+          } as ReplyData));
+          
+          setComments(prev => prev.map(c => 
+            c.id === commentDoc.id ? { ...c, replies } : c
+          ));
+        }, (error) => handleFirestoreError(error, OperationType.LIST, `blog_comments/${commentDoc.id}/replies`));
+      });
+    }, (error) => handleFirestoreError(error, OperationType.LIST, 'blog_comments'));
+
+    return () => unsubscribe();
+  }, [id]);
 
   if (!post) {
     return (
@@ -37,25 +123,53 @@ export default function BlogPost() {
     );
   }
 
+  const handleCommentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!commentText.trim() || !id) return;
+
+    try {
+      await addDoc(collection(db, 'blog_comments'), {
+        postId: id,
+        author: 'Guest Professional',
+        role: 'Market Participant',
+        text: commentText,
+        createdAt: serverTimestamp(),
+        isStaff: false
+      });
+      setCommentText('');
+    } catch (error) {
+      handleFirestoreError(error, OperationType.CREATE, 'blog_comments');
+    }
+  };
+
+  const handleReplySubmit = async (commentId: string) => {
+    const text = replyText[commentId];
+    if (!text?.trim()) return;
+
+    try {
+      await addDoc(collection(db, `blog_comments/${commentId}/replies`), {
+        author: 'Guest Professional',
+        text,
+        createdAt: serverTimestamp(),
+        isStaff: false
+      });
+      setReplyText(prev => ({ ...prev, [commentId]: '' }));
+      setActiveReplyId(null);
+    } catch (error) {
+      handleFirestoreError(error, OperationType.CREATE, `blog_comments/${commentId}/replies`);
+    }
+  };
+
+  const formatDate = (date: any) => {
+    if (!date) return 'Just now';
+    const d = date instanceof Timestamp ? date.toDate() : new Date(date);
+    return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  };
+
   const recentPosts = BLOG_POSTS.filter(p => p.id !== id).slice(0, 3);
   const relatedPosts = BLOG_POSTS.filter(p => 
     p.id !== id && p.tags.some(t => post.tags.includes(t))
   ).slice(0, 3);
-
-  const handleCommentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!comment.trim()) return;
-    const newComment = {
-      id: Date.now(),
-      author: 'Guest User',
-      role: 'Interested Professional',
-      text: comment,
-      date: 'Just now',
-      replies: []
-    };
-    setComments([newComment, ...comments]);
-    setComment('');
-  };
 
   return (
     <div className="flex flex-col w-full">
@@ -141,7 +255,7 @@ export default function BlogPost() {
               <div className="mt-20 pt-16 border-t border-gray-100">
                 <h3 className="text-3xl font-black text-brand-deep mb-10 flex items-center">
                   <MessageSquare size={28} className="mr-4 text-brand-teal" /> 
-                  Comments ({comments.length + comments.reduce((acc, curr) => acc + curr.replies.length, 0)})
+                  Comments ({comments.length + comments.reduce((acc, curr) => acc + (curr.replies?.length || 0), 0)})
                 </h3>
 
                 {/* Comment Form */}
@@ -149,13 +263,13 @@ export default function BlogPost() {
                   <h4 className="text-xl font-bold text-brand-deep mb-6">Leave a Comment</h4>
                   <form onSubmit={handleCommentSubmit} className="space-y-4">
                     <textarea 
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
+                      value={commentText}
+                      onChange={(e) => setCommentText(e.target.value)}
                       placeholder="Share your thoughts or ask a regulatory question..."
                       className="w-full px-6 py-4 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/20 outline-none h-32 resize-none transition-all"
                     />
                     <div className="flex justify-end">
-                      <button className="bg-brand-teal text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-deep transition-all flex items-center shadow-lg shadow-brand-teal/20">
+                      <button type="submit" className="bg-brand-teal text-white px-8 py-3 rounded-xl font-bold hover:bg-brand-deep transition-all flex items-center shadow-lg shadow-brand-teal/20">
                         Post Comment <Send size={18} className="ml-2" />
                       </button>
                     </div>
@@ -176,30 +290,62 @@ export default function BlogPost() {
                               <div className="font-bold text-brand-deep">{c.author}</div>
                               <div className="text-xs text-gray-400">{c.role}</div>
                             </div>
-                            <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">{c.date}</div>
+                            <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">{formatDate(c.createdAt)}</div>
                           </div>
                           <p className="text-gray-600 leading-relaxed">{c.text}</p>
-                          <button className="mt-4 text-xs font-black text-brand-teal uppercase tracking-widest hover:translate-x-1 transition-transform inline-flex items-center">
+                          <button 
+                            onClick={() => setActiveReplyId(activeReplyId === c.id ? null : c.id)}
+                            className="mt-4 text-xs font-black text-brand-teal uppercase tracking-widest hover:translate-x-1 transition-transform inline-flex items-center"
+                          >
                             Reply
                           </button>
+
+                          {/* Reply Box */}
+                          {activeReplyId === c.id && (
+                            <motion.div 
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              className="mt-6 pt-6 border-t border-gray-100"
+                            >
+                              <div className="flex space-x-3">
+                                <input 
+                                  type="text" 
+                                  value={replyText[c.id] || ''}
+                                  onChange={(e) => setReplyText(prev => ({ ...prev, [c.id]: e.target.value }))}
+                                  placeholder="Write a reply..."
+                                  className="flex-1 px-4 py-2 rounded-xl bg-gray-50 border border-gray-200 outline-none focus:border-brand-teal transition-all text-sm"
+                                  onKeyDown={(e) => e.key === 'Enter' && handleReplySubmit(c.id)}
+                                />
+                                <button 
+                                  onClick={() => handleReplySubmit(c.id)}
+                                  className="bg-brand-teal text-white p-2 rounded-xl hover:bg-brand-deep transition-all"
+                                >
+                                  <Send size={18} />
+                                </button>
+                              </div>
+                            </motion.div>
+                          )}
                         </div>
                       </div>
                       
                       {/* Replies */}
-                      {c.replies.map((r: any) => (
+                      {c.replies?.map((r) => (
                         <div key={r.id} className="flex space-x-4 pl-12">
-                          <div className="w-10 h-10 bg-brand-deep/10 rounded-xl flex items-center justify-center font-bold text-brand-deep shrink-0">
-                            RF
+                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold shrink-0 ${r.isStaff ? 'bg-brand-deep text-white' : 'bg-gray-100 text-gray-400'}`}>
+                            {r.isStaff ? 'RF' : r.author[0]}
                           </div>
-                          <div className="flex-1 bg-brand-teal/5 p-6 rounded-2xl border border-brand-teal/10">
+                          <div className={`flex-1 p-6 rounded-2xl border ${r.isStaff ? 'bg-brand-teal/5 border-brand-teal/10' : 'bg-gray-50 border-gray-100'}`}>
                             <div className="flex justify-between items-start mb-2">
                               <div className="flex items-center">
                                 <CornerDownRight size={14} className="mr-2 text-brand-teal" />
-                                <div className="font-bold text-brand-deep">{r.author} <span className="text-[10px] bg-brand-teal text-white px-2 py-0.5 rounded-full ml-2 uppercase">Team</span></div>
+                                <div className="font-bold text-brand-deep">
+                                  {r.author} 
+                                  {r.isStaff && <span className="text-[10px] bg-brand-teal text-white px-2 py-0.5 rounded-full ml-2 uppercase">Team</span>}
+                                </div>
                               </div>
-                              <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">{r.date}</div>
+                              <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">{formatDate(r.createdAt)}</div>
                             </div>
-                            <p className="text-gray-600 leading-relaxed">{r.text}</p>
+                            <p className="text-gray-600 leading-relaxed text-sm">{r.text}</p>
                           </div>
                         </div>
                       ))}
