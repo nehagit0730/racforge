@@ -1,9 +1,48 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Clock, Send, Globe, MessageSquare, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Mail, Phone, MapPin, Send, Facebook, Twitter, Linkedin, Instagram, Youtube, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
+import { db } from '../lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      await addDoc(collection(db, 'contact_inquiries'), {
+        ...formData,
+        createdAt: serverTimestamp()
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('Form submission failed. Please try again or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
   return (
     <div className="flex flex-col w-full">
       <SEO 
@@ -128,45 +167,121 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 p-10 md:p-16 rounded-[4rem] border border-gray-100 shadow-2xl relative overflow-hidden"
+                className="bg-gray-50 p-10 md:p-16 rounded-[4rem] border border-gray-100 shadow-2xl relative overflow-hidden min-h-[600px]"
               >
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-teal/5 skew-x-12 translate-x-1/4"></div>
-                <div className="relative z-10">
-                  <h3 className="text-3xl font-extrabold text-brand-deep mb-10">Send a Message</h3>
-                  <form action="mailto:info@racforge.com" method="post" encType="text/plain" className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-3">
-                        <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">First Name *</label>
-                        <input required type="text" name="firstName" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" />
-                      </div>
-                      <div className="space-y-3">
-                        <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Last Name *</label>
-                        <input required type="text" name="lastName" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" />
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Email Address *</label>
-                      <input required type="email" name="email" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" />
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Subject *</label>
-                      <select required name="subject" className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white">
-                        <option value="">Select a subject</option>
-                        <option value="CDSCO Inquiry">CDSCO Inquiry</option>
-                        <option value="USFDA Inquiry">USFDA Inquiry</option>
-                        <option value="EU MDR Inquiry">EU MDR Inquiry</option>
-                        <option value="Anvisa Inquiry">Anvisa Inquiry</option>
-                        <option value="General Inquiry">General Inquiry</option>
-                      </select>
-                    </div>
-                    <div className="space-y-3">
-                      <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Message *</label>
-                      <textarea required name="message" rows={5} className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white resize-none"></textarea>
-                    </div>
-                    <button type="submit" className="w-full bg-brand-deep text-white py-6 rounded-2xl font-black text-xl hover:bg-brand-teal transition-all shadow-xl shadow-brand-deep/20 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center">
-                      Send Message <Send className="ml-3" size={24} />
-                    </button>
-                  </form>
+                <div className="relative z-10 h-full flex flex-col">
+                  <AnimatePresence mode="wait">
+                    {!isSubmitted ? (
+                      <motion.div
+                        key="form"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="space-y-10"
+                      >
+                        <h3 className="text-3xl font-extrabold text-brand-deep">Send a Message</h3>
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-3">
+                              <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">First Name *</label>
+                              <input 
+                                required 
+                                type="text" 
+                                name="firstName" 
+                                value={formData.firstName}
+                                onChange={handleChange}
+                                className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" 
+                              />
+                            </div>
+                            <div className="space-y-3">
+                              <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Last Name *</label>
+                              <input 
+                                required 
+                                type="text" 
+                                name="lastName" 
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" 
+                              />
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Email Address *</label>
+                            <input 
+                              required 
+                              type="email" 
+                              name="email" 
+                              value={formData.email}
+                              onChange={handleChange}
+                              className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white" 
+                            />
+                          </div>
+                          <div className="space-y-3">
+                            <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Subject *</label>
+                            <select 
+                              required 
+                              name="subject" 
+                              value={formData.subject}
+                              onChange={handleChange}
+                              className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white"
+                            >
+                              <option value="">Select a subject</option>
+                              <option value="CDSCO Inquiry">CDSCO Inquiry</option>
+                              <option value="USFDA Inquiry">USFDA Inquiry</option>
+                              <option value="EU MDR Inquiry">EU MDR Inquiry</option>
+                              <option value="Anvisa Inquiry">Anvisa Inquiry</option>
+                              <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                          </div>
+                          <div className="space-y-3">
+                            <label className="text-sm font-bold text-brand-deep uppercase tracking-widest">Message *</label>
+                            <textarea 
+                              required 
+                              name="message" 
+                              rows={5} 
+                              value={formData.message}
+                              onChange={handleChange}
+                              className="w-full px-8 py-5 rounded-2xl border border-gray-200 focus:border-brand-teal focus:ring-4 focus:ring-brand-teal/10 outline-none transition-all bg-white resize-none"
+                            ></textarea>
+                          </div>
+                          
+                          {error && (
+                            <p className="text-red-500 text-sm font-bold">{error}</p>
+                          )}
+
+                          <button 
+                            disabled={isSubmitting}
+                            type="submit" 
+                            className={`w-full bg-brand-deep text-white py-6 rounded-2xl font-black text-xl hover:bg-brand-teal transition-all shadow-xl shadow-brand-deep/20 transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                          >
+                            {isSubmitting ? 'Sending...' : 'Send Message'} <Send className="ml-3" size={24} />
+                          </button>
+                        </form>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="flex-1 flex flex-col items-center justify-center text-center py-20"
+                      >
+                        <div className="w-24 h-24 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal mb-8">
+                          <CheckCircle2 size={64} />
+                        </div>
+                        <h3 className="text-3xl font-black text-brand-deep mb-4">Message Sent Securely</h3>
+                        <p className="text-gray-600 text-lg max-w-sm mb-10">
+                          Thank you for reaching out. Our regulatory experts will review your inquiry and get back to you within 24-48 hours.
+                        </p>
+                        <button 
+                          onClick={() => setIsSubmitted(false)}
+                          className="text-brand-teal font-black uppercase tracking-widest flex items-center hover:translate-x-2 transition-transform"
+                        >
+                          Send another message <Send className="ml-3" size={20} />
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             </div>

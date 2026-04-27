@@ -25,6 +25,19 @@
         "isStaff": { "type": "boolean", "description": "Whether the reply is from a staff member." }
       },
       "required": ["author", "text", "createdAt"]
+    "ContactInquiry": {
+      "title": "Contact Inquiry",
+      "description": "A message sent via the contact form.",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["firstName", "lastName", "email", "subject", "message", "createdAt"]
     }
   },
   "firestore": {
@@ -35,6 +48,10 @@
     "/blog_comments/{commentId}/replies/{replyId}": {
       "schema": "Reply",
       "description": "Replies to blog comments."
+    },
+    "/contact_inquiries/{inquiryId}": {
+      "schema": "ContactInquiry",
+      "description": "Contact form submissions."
     }
   }
 }
