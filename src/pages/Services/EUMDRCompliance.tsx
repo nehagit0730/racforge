@@ -9,8 +9,9 @@ export default function EUMDRCompliance() {
   return (
     <div className="flex flex-col w-full">
       <SEO 
-        title="EU MDR Compliance" 
-        description="Expert guidance for EU Medical Device Regulation (MDR) 2017/745 compliance and CE Marking for medical devices in Europe."
+        title="EU MDR 2017/745 Compliance & CE Marking" 
+        description="Expert guidance for EU Medical Device Regulation (MDR) 2017/745 compliance and CE Marking. Support for Technical Documentation, CER, and PMCF."
+        keywords="EU MDR compliance, CE Marking medical devices, MDR 2017/745, technical documentation Annex II, CER writing EU MDR, PRRC support"
         canonical="/services/eu-mdr-compliance"
       />
 

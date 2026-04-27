@@ -9,8 +9,9 @@ export default function CDSCOManufacturing() {
   return (
     <div className="flex flex-col w-full">
       <SEO 
-        title="CDSCO Manufacturing License" 
-        description="Expert guidance for obtaining CDSCO Manufacturing Licenses (MD-3, MD-5, MD-7, MD-9) for medical devices in India."
+        title="CDSCO Manufacturing License India (MD-3, MD-5, MD-7, MD-9)" 
+        description="Expert guidance for obtaining CDSCO Manufacturing Licenses in India. We help with Form MD-3, MD-5, MD-7, and MD-9 applications via the SUGAM portal."
+        keywords="CDSCO manufacturing license, Form MD-5, Form MD-9, Indian MDR 2017, SUGAM portal help, medical device license India"
         canonical="/services/cdsco-manufacturing-license"
       />
 

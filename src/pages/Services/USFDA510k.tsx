@@ -9,8 +9,9 @@ export default function USFDA510k() {
   return (
     <div className="flex flex-col w-full">
       <SEO 
-        title="USFDA 510(k) Submission" 
-        description="Expert guidance for USFDA 510(k) Premarket Notification for medical devices in the United States."
+        title="USFDA 510(k) Submission Consulting & eSTAR Support" 
+        description="Expert consulting for USFDA 510(k) Premarket Notifications. We specialize in predicate identification, technical file assembly, and eSTAR electronic submissions."
+        keywords="USFDA 510k, 510k submission help, FDA medical device clearance, eSTAR submission, USFDA regulatory consulting, substantial equivalence"
         canonical="/services/usfda-510k-submission"
       />
 

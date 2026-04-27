@@ -176,7 +176,9 @@ export default function BlogPost() {
       <SEO 
         title={post.title} 
         description={post.excerpt} 
+        keywords={`${post.tags.join(', ')}, ${post.category}, medical device regulations`}
         canonical={`/blogs/${id}`}
+        type="article"
       />
 
       {/* Post Header */}

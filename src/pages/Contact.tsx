@@ -7,8 +7,9 @@ export default function Contact() {
   return (
     <div className="flex flex-col w-full">
       <SEO 
-        title="Contact Us" 
-        description="Get in touch with our regulatory experts for a consultation on your medical device approval pathway."
+        title="Contact RAC Forge - Regulatory Consultation" 
+        description="Book a consultation with RAC Forge's regulatory experts. We help medical device manufacturers with CDSCO, USFDA, and EU MDR compliance. Contact us today."
+        keywords="contact rac forge, regulatory consultation, medical device compliance help, CDSCO help, FDA license contact"
         canonical="/contact"
       />
 

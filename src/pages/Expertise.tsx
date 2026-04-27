@@ -66,8 +66,9 @@ export default function Expertise() {
   return (
     <div className="flex flex-col w-full">
       <SEO 
-        title="Our Expertise" 
-        description="Deep regulatory expertise in CDSCO, USFDA, EU MDR, and Anvisa Brazil. Strategic guidance for medical device compliance."
+        title="Global Medical Device Regulatory Expertise" 
+        description="Our deep expertise covers CDSCO India, USFDA, EU MDR, and Anvisa Brazil. We specialize in 510(k), CE Marking, and complex regulatory submissions for medical devices."
+        keywords="CDSCO expertise, USFDA 510k consulting, EU MDR compliance experts, Anvisa Brazil registration, medical device R&D strategy"
         canonical="/expertise"
       />
 
